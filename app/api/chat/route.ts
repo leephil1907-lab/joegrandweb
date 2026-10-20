@@ -86,13 +86,15 @@ function parseMessages(payload: unknown): IncomingMessage[] | null {
 }
 
 export async function POST(request: Request) {
+  let question = "";
+
   try {
     const incoming = parseMessages(await request.json());
     if (!incoming || !incoming.length || incoming[incoming.length - 1].sender !== "user") {
       return textResponse("Please send a message to begin.", 400);
     }
 
-    const question = incoming[incoming.length - 1].text;
+    question = incoming[incoming.length - 1].text;
 
     // The public guide keeps the chat useful before an AI-provider key is configured.
     if (!process.env.OPENAI_API_KEY) return textResponse(publicGuideReply(question));
@@ -134,8 +136,9 @@ export async function POST(request: Request) {
         "X-Joegrand-Assistant-Mode": "ai",
       },
     });
-  } catch (error) {
-    console.error("AI chat request failed:", error);
+  } catch {
+    console.warn("AI chat unavailable; serving the public site guide instead.");
+    if (question) return textResponse(publicGuideReply(question));
     return textResponse("The assistant could not process that message. Please try again, or use the Contact page for a formal enquiry.", 500);
   }
 }
