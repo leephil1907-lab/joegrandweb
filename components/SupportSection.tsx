@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "motion/react";
-import { ArrowRight, MessageCircle, Handshake, GraduationCap } from "lucide-react";
+import { ArrowRight, Handshake, GraduationCap, Mail } from "lucide-react";
 import Reveal from "./Reveal";
 
+const supportEmailHref = "mailto:jg8347331@gmail.com?subject=Joe%20Grand%20website%20support";
+
 const options = [
-  { title: "General Support", text: "Questions about Joe’s website, videos, projects, or technical content.", action: "Start chat", icon: MessageCircle, kind: "chat" },
+  { title: "General Support", text: "Questions about Joe’s website, videos, projects, or technical content.", action: "Email support", icon: Mail, href: supportEmailHref },
   { title: "Collaborations", text: "Project ideas, partnerships, interviews, and creative engineering work.", action: "Contact Joe", icon: Handshake, kind: "contact" },
   { title: "Speaking & Training", text: "Conference talks, workshops, training sessions, and event enquiries.", action: "Request information", icon: GraduationCap, kind: "contact" },
 ];
@@ -28,15 +29,24 @@ export default function SupportSection() {
           <p className="support-intro">Start a quick conversation with the site assistant or explore the right route for a collaboration, talk, or training enquiry.</p>
         </Reveal>
         <div className="support-grid">
-          {options.map((option, index) => {
+          {options.map((option) => {
             const Icon = option.icon;
+            if ("href" in option) {
+              return (
+                <article key={option.title} className="support-card">
+                  <a className="support-icon" href={option.href} aria-label="Email support"><Icon size={21} /></a>
+                  <h3>{option.title}</h3>
+                <p>{option.text}</p>
+              </article>
+              );
+            }
             return (
-              <motion.article key={option.title} className="support-card" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.5, delay: index * 0.08 }} whileHover={{ y: -5 }}>
+              <article key={option.title} className="support-card">
                 <div className="support-icon"><Icon size={21} /></div>
                 <h3>{option.title}</h3>
                 <p>{option.text}</p>
                 <button type="button" className="support-action" onClick={() => activate(option.kind)}>{option.action}<ArrowRight size={15} /></button>
-              </motion.article>
+              </article>
             );
           })}
         </div>

@@ -1,14 +1,27 @@
-# Joe Grand — Personal Website
+# Joe Grand — Hardware Hacking, Security & Creative Engineering
 
-A responsive Next.js App Router site with a dark hardware-lab visual direction, electric-green accents, mobile navigation, project and expertise sections, video discovery links, collaboration information, and contact CTA.
+A responsive Next.js App Router website for Joe Grand (Kingpin), built around a punk hardware-lab visual system, public project discovery, video learning, training, community links, and an interactive Kingpin Badge Generator.
 
-## Kingpin Badge Generator
+## What is included
 
-The homepage includes an interactive Kingpin Badge Generator. Visitors can enter a handle, choose one of four badge styles and an accent signal, select a hacker level, preview the design on a live canvas, generate a new badge ID, and download the badge as a PNG. Badge artwork is rendered locally in the browser; handles are not uploaded to a server. The Kingpin level is unlocked by completing the Kingpin Protocol.
+- Reference-inspired yellow, black, pink, purple, and lime visual identity
+- Responsive homepage with projects, videos, community, training, support, and contact paths
+- Dedicated `/about`, `/projects`, `/videos`, `/training`, `/community`, `/contact`, and `/privacy` pages
+- Public YouTube profile and banner imagery stored locally in `public/youtube-assets/`
+- A shareable Kingpin Badge Generator with live preview, PNG download, local browser storage, and copyable configuration URLs
+- Contact and update forms with server-side webhook integration points; no public contact email is exposed
+- Keyboard skip link, visible focus handling, page metadata, `sitemap.xml`, `robots.txt`, manifest, and a branded Open Graph image
 
-## YouTube videos
+## Content workflow
 
-The homepage video section now uses the five YouTube links supplied for this project, with video thumbnails and direct links to each original watch page. The cards use neutral numbered labels rather than guessed video titles; replace those labels with verified titles when YouTube metadata can be confirmed.
+Editorial catalog data lives in [`content/site-content.ts`](content/site-content.ts):
+
+- official links and contact address
+- videos
+- projects
+- training courses
+
+Update this single content source to refresh the public project, video, and training pages. See [`content/README.md`](content/README.md) for details and an eventual headless-CMS migration path.
 
 ## Local development
 
@@ -17,21 +30,24 @@ npm install
 npm run dev
 ```
 
-Build for production with `npm run build` and run with `npm start`. The `lint` script runs the TypeScript compiler with `tsc --noEmit`.
+Production checks:
 
-## Verification status
+```bash
+npm run lint
+npm run build
+npm start
+```
 
-Automated CI results are still unavailable, and I have not run a production build or browser test, so those remain to be verified before calling the feature production-tested.
+## Privacy and integrations
 
-## Before launch
+Google Analytics is ready for opt-in deployment through Google Consent Mode. Contact and newsletter routes are ready to forward data to server-side provider webhooks. They stay unavailable until their environment variables are configured.
 
-- Confirm the official preferred domain and update `metadataBase` in `app/layout.tsx`.
-- Replace the placeholder email address in `app/page.tsx` with a verified contact channel.
-- Replace concept/draft project and video copy with approved facts.
-- Add verified YouTube video IDs and thumbnails before presenting individual videos as specific published content.
-- Add approved portrait, project photography, social profiles, privacy policy, and terms.
-- Verify permission for all biography, imagery, project descriptions, and media references.
+Before connecting a CMS, email service, analytics platform, or newsletter provider:
 
-## Deploy
+1. Put credentials and webhook URLs in deployment environment variables—never client-side code.
+2. Update `/privacy` with the provider, purpose, and retention details.
+3. Confirm approved/owned image and copy rights for all public assets.
 
-Import `leephil1907-lab/joegrandweb` into Vercel and keep the default Next.js build settings. The site is a frontend starter and does not currently include a CMS or contact form backend.
+## Deployment
+
+The app is compatible with standard Next.js hosting such as Vercel. Set the production domain in `app/layout.tsx` (`metadataBase`) if it differs from `https://joegrand.com`.

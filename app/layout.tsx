@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AnalyticsConsent from "@/components/AnalyticsConsent";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ScrollProgress from "@/components/ScrollProgress";
 import LiveChat from "@/components/LiveChat";
 import KingpinProtocol from "@/components/KingpinProtocol";
@@ -32,5 +34,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><ScrollProgress />{children}<LiveChat /><KingpinProtocol /></body></html>;
+  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim().toUpperCase();
+  const analyticsEnabled = Boolean(measurementId && /^G-[A-Z0-9]+$/.test(measurementId));
+  return <html lang="en"><body><GoogleAnalytics measurementId={measurementId} /><ScrollProgress />{children}<LiveChat /><KingpinProtocol /><AnalyticsConsent enabled={analyticsEnabled} /></body></html>;
 }

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { CircuitBoard, Download, RefreshCw, Sparkles } from "lucide-react";
+import { CircuitBoard, Download, Link2, RefreshCw, Sparkles } from "lucide-react";
 import Reveal from "./Reveal";
 
 const badgeStyles = [
@@ -13,10 +13,10 @@ const badgeStyles = [
 ] as const;
 
 const accentColors = [
-  { id: "#00E676", label: "Circuit Green" },
-  { id: "#22D3EE", label: "Signal Cyan" },
-  { id: "#FFB300", label: "Warning Amber" },
-  { id: "#FF4D6D", label: "Alert Red" },
+  { id: "#F7D330", label: "Signal Yellow" },
+  { id: "#FF3EB8", label: "Poster Pink" },
+  { id: "#A4FF23", label: "Workshop Lime" },
+  { id: "#B866D1", label: "Pinboard Purple" },
 ] as const;
 
 const levels = ["Maker", "Explorer", "Reverse Engineer", "Kingpin"] as const;
@@ -34,19 +34,37 @@ export default function BadgeGenerator() {
   const [level, setLevel] = useState<(typeof levels)[number]>("Maker");
   const [badgeId, setBadgeId] = useState("");
   const [downloaded, setDownloaded] = useState(false);
+  const [shareStatus, setShareStatus] = useState(false);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    setBadgeId(generateBadgeId());
+    const params = new URLSearchParams(window.location.search);
+    const sharedHandle = params.get("badgeHandle");
+    const sharedStyle = params.get("badgeStyle") as BadgeStyle | null;
+    const sharedAccent = params.get("badgeAccent");
+    const sharedLevel = params.get("badgeLevel") as (typeof levels)[number] | null;
+    const sharedId = params.get("badgeId");
+
+    setBadgeId(sharedId || generateBadgeId());
+    if (sharedHandle) setHandle(sharedHandle.slice(0, 14));
+    if (sharedStyle && badgeStyles.some((item) => item.id === sharedStyle)) setStyle(sharedStyle);
+    if (sharedAccent && accentColors.some((color) => color.id === sharedAccent)) setAccent(sharedAccent);
+
+    let kingpinUnlocked = false;
     try {
-      if (localStorage.getItem("joegrand-kingpin-protocol-complete") === "true") {
+      kingpinUnlocked = localStorage.getItem("joegrand-kingpin-protocol-complete") === "true";
+      if (kingpinUnlocked) {
         localStorage.setItem("joegrand-badge-level", "Kingpin");
         setLevel("Kingpin");
+      } else if (sharedLevel && levels.includes(sharedLevel) && sharedLevel !== "Kingpin") {
+        setLevel(sharedLevel);
       } else {
         const savedLevel = localStorage.getItem("joegrand-badge-level");
         if (savedLevel && levels.includes(savedLevel as (typeof levels)[number])) setLevel(savedLevel as (typeof levels)[number]);
       }
-    } catch { /* Local storage may be unavailable. */ }
+    } catch {
+      if (sharedLevel && levels.includes(sharedLevel) && sharedLevel !== "Kingpin") setLevel(sharedLevel);
+    }
 
     const handleProtocolComplete = () => {
       setLevel("Kingpin");
@@ -65,12 +83,12 @@ export default function BadgeGenerator() {
     const height = canvas.height;
     const displayName = (handle.trim() || "HACKER").toUpperCase().replace(/[^A-Z0-9_ .-]/g, "").slice(0, 14) || "HACKER";
     context.clearRect(0, 0, width, height);
-    context.fillStyle = "#0B0F0C";
+    context.fillStyle = "#111111";
     context.fillRect(0, 0, width, height);
 
     const glow = context.createRadialGradient(width * .78, height * .3, 2, width * .78, height * .3, 260);
     glow.addColorStop(0, accent + "26");
-    glow.addColorStop(1, "#0B0F0C00");
+    glow.addColorStop(1, "#11111100");
     context.fillStyle = glow;
     context.fillRect(0, 0, width, height);
 
@@ -101,13 +119,13 @@ export default function BadgeGenerator() {
     context.fillStyle = accent;
     context.font = "700 18px monospace";
     context.fillText("JOE GRAND // KINGPIN PROTOCOL", 38, 57);
-    context.fillStyle = "rgba(232,245,233,.66)";
+    context.fillStyle = "rgba(246,241,229,.66)";
     context.font = "400 13px monospace";
     context.fillText("HARDWARE HACKING BADGE", 40, 80);
 
     context.save();
     context.beginPath(); context.rect(38, 102, 265, 75); context.clip();
-    context.fillStyle = "#E8F5E9";
+    context.fillStyle = "#F6F1E5";
     let fontSize = 48;
     context.font = `800 ${fontSize}px monospace`;
     while (context.measureText(displayName).width > 260 && fontSize > 20) {
@@ -119,7 +137,7 @@ export default function BadgeGenerator() {
     context.fillStyle = accent;
     context.font = "700 16px monospace";
     context.fillText(`LEVEL: ${level.toUpperCase()}`, 40, 204);
-    context.fillStyle = "rgba(232,245,233,.6)";
+    context.fillStyle = "rgba(246,241,229,.6)";
     context.font = "400 13px monospace";
     context.fillText(`ID: ${badgeId || "JG-XXXX-0000"}`, 40, 230);
 
@@ -162,7 +180,7 @@ export default function BadgeGenerator() {
       context.fillText("MCU", 430, 190);
     }
 
-    context.fillStyle = "rgba(232,245,233,.48)";
+    context.fillStyle = "rgba(246,241,229,.48)";
     context.font = "400 11px monospace";
     context.fillText("GENERATED LOCALLY / JOEGRAND.COM", 40, height - 34);
     context.textAlign = "right";
@@ -182,6 +200,24 @@ export default function BadgeGenerator() {
     link.href = canvas.toDataURL("image/png");
     link.click();
     setDownloaded(true);
+  }
+
+  async function copyShareLink() {
+    const url = new URL(window.location.href);
+    url.hash = "badge-generator";
+    url.searchParams.set("badgeHandle", handle.trim().slice(0, 14));
+    url.searchParams.set("badgeStyle", style);
+    url.searchParams.set("badgeAccent", accent);
+    url.searchParams.set("badgeLevel", level);
+    url.searchParams.set("badgeId", badgeId || generateBadgeId());
+
+    try {
+      await navigator.clipboard.writeText(url.toString());
+      setShareStatus(true);
+      window.setTimeout(() => setShareStatus(false), 2600);
+    } catch {
+      window.prompt("Copy this link to share your badge:", url.toString());
+    }
   }
 
   function chooseLevel(nextLevel: (typeof levels)[number]) {
@@ -210,8 +246,12 @@ export default function BadgeGenerator() {
               <fieldset className="badge-fieldset"><legend>Badge style</legend><div className="badge-style-options">{badgeStyles.map((item) => <button type="button" key={item.id} aria-pressed={style === item.id} onClick={() => { setStyle(item.id); setDownloaded(false); }} className={style === item.id ? "is-active" : ""}>{item.label}</button>)}</div></fieldset>
               <fieldset className="badge-fieldset"><legend>Accent signal</legend><div className="badge-color-options">{accentColors.map((color) => <button type="button" key={color.id} aria-label={color.label} title={color.label} aria-pressed={accent === color.id} onClick={() => { setAccent(color.id); setDownloaded(false); }} className={accent === color.id ? "is-active" : ""} style={{ backgroundColor: color.id }}><span className="sr-only">{color.label}</span></button>)}</div><p className="badge-selected-color">{accentColors.find((color) => color.id === accent)?.label}</p></fieldset>
               <fieldset className="badge-fieldset"><legend>Hacker level</legend><div className="badge-level-options">{levels.map((item) => { const locked = item === "Kingpin" && level !== "Kingpin"; return <button type="button" key={item} aria-pressed={level === item} aria-disabled={locked} title={locked ? "Complete the Kingpin Protocol to unlock this level" : undefined} onClick={() => chooseLevel(item)} className={level === item ? "is-active" : locked ? "is-locked" : ""}>{item}{locked ? <span aria-hidden="true"> · LOCKED</span> : null}</button>; })}</div></fieldset>
-              <div className="badge-actions"><motion.button type="button" onClick={downloadBadge} whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: .98 }}><Download size={17}/> Download PNG</motion.button><motion.button type="button" className="badge-secondary-action" onClick={() => { setBadgeId(generateBadgeId()); setDownloaded(false); }} whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: .98 }}><RefreshCw size={16}/> New badge ID</motion.button></div>
-              {downloaded && <p className="badge-download-status" role="status">PNG download requested — your badge is ready to share.</p>}
+              <div className="badge-actions">
+                <motion.button type="button" onClick={downloadBadge} whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: .98 }}><Download size={17}/> Download PNG</motion.button>
+                <motion.button type="button" className="badge-secondary-action" onClick={() => { setBadgeId(generateBadgeId()); setDownloaded(false); setShareStatus(false); }} whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: .98 }}><RefreshCw size={16}/> New badge ID</motion.button>
+                <button type="button" className="badge-share-action" onClick={copyShareLink}><Link2 size={16}/> Copy share link</button>
+              </div>
+              {(downloaded || shareStatus) && <p className="badge-download-status" role="status">{shareStatus ? "Share link copied — send your badge configuration to a friend." : "PNG download requested — your badge is ready to share."}</p>}
             </div>
           </Reveal>
           <Reveal delay={0.12}>
