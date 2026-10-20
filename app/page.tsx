@@ -87,21 +87,21 @@ export default function HomePage() {
       <section className="section" id="about">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">01 / ABOUT JOE</div><h2>Who Is <span>Joe Grand?</span></h2></div><p className="section-intro">An engineer’s mindset, a hacker’s curiosity, and a teacher’s instinct to share what works.</p></div>
-          <div className="about-layout"><div className="about-index mono"><span>JG_001</span><div className="about-symbol"><Code2 size={48}/></div><span>COMPUTER ENGINEER<br/>HARDWARE HACKER</span></div><Reveal className="about-copy"><p>Joe Grand, also known as Kingpin, is a computer engineer, hardware hacker, inventor, and educator. He has spent decades exploring, designing, and manipulating electronic systems, sharing his work through videos, talks, training, and engineering projects.</p><p>From hardware security research to product design and public education, Joe makes complex technology understandable, practical, and engaging.</p><a className="text-link" href={officialSite} target="_blank" rel="noopener noreferrer">Learn More About Joe <ArrowRight size={15}/></a></div></div>
+          <div className="about-layout"><div className="about-index mono"><span>JG_001</span><div className="about-symbol"><Code2 size={48}/></div><span>COMPUTER ENGINEER<br/>HARDWARE HACKER</span></div><Reveal className="about-copy"><p>Joe Grand, also known as Kingpin, is a computer engineer, hardware hacker, inventor, and educator. He has spent decades exploring, designing, and manipulating electronic systems, sharing his work through videos, talks, training, and engineering projects.</p><p>From hardware security research to product design and public education, Joe makes complex technology understandable, practical, and engaging.</p><a className="text-link" href={officialSite} target="_blank" rel="noopener noreferrer">Learn More About Joe <ArrowRight size={15}/></a></Reveal></div>
         </div>
       </section>
 
       <section className="section" id="expertise">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">02 / EXPERTISE</div><h2>What Joe <span>Does</span></h2></div><p className="section-intro">Hardware hacking, electronics, security research, product design, and hands-on education.</p></div>
-          <Reveal className="grid-4">{expertise.map(({icon:Icon,n,title,text,tag})=><article className="card expertise-card" key={n}><div className="card-topline"><span className="card-number mono">[{n}]</span><Icon size={21}/></div><h3>{title}</h3><p>{text}</p><span className="card-tag mono">{tag}</span></article>)}</div>
+          <Reveal className="grid-4">{expertise.map(({icon:Icon,n,title,text,tag})=><article className="card expertise-card" key={n}><div className="card-topline"><span className="card-number mono">[{n}]</span><Icon size={21}/></div><h3>{title}</h3><p>{text}</p><span className="card-tag mono">{tag}</span></article>)}</Reveal>
         </div>
       </section>
 
       <section className="section" id="projects">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">03 / SELECTED WORK</div><h2>Selected <span>Projects</span></h2></div><p className="section-intro">Explore a selection of Joe’s hardware hacking experiments, engineering projects, security research, and public demonstrations.</p></div>
-          <Reveal className="grid-3">{projects.map(p=><article className="card project-card" key={p.n}><div className="project-number mono">{p.n}</div><h3>{p.title}</h3><p>{p.text}</p><span className="card-tag mono">{p.tag} ↗</span></article>)}</div>
+          <Reveal className="grid-3">{projects.map(p=><article className="card project-card" key={p.n}><div className="project-number mono">{p.n}</div><h3>{p.title}</h3><p>{p.text}</p><span className="card-tag mono">{p.tag} ↗</span></article>)}</Reveal>
           <div className="section-action"><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer">View Projects on YouTube <ArrowRight size={15}/></a></div>
         </div>
       </section>
@@ -109,7 +109,7 @@ export default function HomePage() {
       <section className="section" id="videos">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">04 / WATCH & LEARN</div><h2>Latest <span>Videos</span></h2></div><p className="section-intro">Watch the newest videos from Joe’s YouTube channel — covering hardware hacking, electronics, security research, tools, and engineering projects.</p></div>
-          <Reveal className="video-grid">{videos.map((v,i)=><a className="video-card" key={v.title} href={youtube} target="_blank" rel="noopener noreferrer"><div className="video-thumb"><span className="thumb-index mono">0{i+1} / MEDIA</span><span className="thumb-icon"><Play size={22} fill="currentColor"/></span><span className="thumb-bottom mono">{v.category}</span></div><div className="video-info"><span className="video-category mono">{v.type}</span><h3>{v.title}</h3><span className="text-link">Watch on YouTube <ArrowRight size={14}/></span></div></a>)}</div>
+          <Reveal className="video-grid">{videos.map((v,i)=><a className="video-card" key={v.title} href={youtube} target="_blank" rel="noopener noreferrer"><div className="video-thumb"><span className="thumb-index mono">0{i+1} / MEDIA</span><span className="thumb-icon"><Play size={22} fill="currentColor"/></span><span className="thumb-bottom mono">{v.category}</span></div><div className="video-info"><span className="video-category mono">{v.type}</span><h3>{v.title}</h3><span className="text-link">Watch on YouTube <ArrowRight size={14}/></span></div></a>)}</Reveal>
           <div className="section-action"><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer">View All Videos <ArrowRight size={15}/></a><a className="text-link" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Subscribe on YouTube</a></div>
           <p className="content-note mono">CHANNEL LINK ACTIVE / INDIVIDUAL VIDEO EMBEDS REQUIRE VERIFIED VIDEO IDS</p>
         </div>
@@ -123,7 +123,7 @@ export default function HomePage() {
             <article className="card"><div className="card-icon"><Mic2 size={21}/></div><h3>Speaking</h3><p>Conference talks, interviews, panels, and public presentations.</p><span className="card-tag mono">TALKS & EVENTS ↗</span></article>
             <article className="card"><div className="card-icon"><GraduationCap size={21}/></div><h3>Training</h3><p>Hands-on workshops and educational sessions on hardware hacking and security thinking.</p><span className="card-tag mono">LEARN BY DOING ↗</span></article>
             <article className="card"><div className="card-icon"><Radio size={21}/></div><h3>Collaborations</h3><p>Projects, content, research, and product collaborations.</p><span className="card-tag mono">MAKE SOMETHING ↗</span></article>
-          </div>
+          </Reveal>
           <div className="section-action"><a className="button" href="#contact">Contact Joe <ArrowRight size={15}/></a></div>
         </div>
       </section>
