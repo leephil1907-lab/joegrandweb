@@ -41,7 +41,7 @@ export default function HomePage() {
           </a>
           <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>{menuOpen ? <X size={20}/> : <Menu size={20}/>}</button>
           <nav className={`nav-links ${menuOpen ? "open" : ""}`} aria-label="Main navigation">
-            <a href="#home" onClick={closeMenu}>Home</a><a href="#about" onClick={closeMenu}>About</a><a href="#projects" onClick={closeMenu}>Projects</a><a href="#videos" onClick={closeMenu}>Videos</a><a href="#services" onClick={closeMenu}>Services</a><a href="#contact" onClick={closeMenu}>Contact</a>
+            <a href="#home" onClick={closeMenu}>Home</a><a href="#about" onClick={closeMenu}>About</a><a href="#projects" onClick={closeMenu}>Projects</a><a href="#videos" onClick={closeMenu}>Videos</a><a href="#services" onClick={closeMenu}>Services</a><a href="#contact" onClick={closeMenu}>Contact</a><a href="/login" onClick={closeMenu}>Log in</a><a href="/signup" onClick={closeMenu}>Sign up</a>
           </nav>
           <a className="nav-cta" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={15}/> Watch on YouTube <ExternalLink size={13}/></a>
         </div>
