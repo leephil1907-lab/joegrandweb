@@ -2,6 +2,10 @@
 
 A responsive Next.js App Router site with a dark hardware-lab visual direction, electric-green accents, mobile navigation, project and expertise sections, video discovery links, collaboration information, and contact CTA.
 
+## Kingpin Badge Generator
+
+The homepage includes an interactive Kingpin Badge Generator. Visitors can enter a handle, choose one of four badge styles and an accent signal, select a hacker level, preview the design on a live canvas, generate a new badge ID, and download the badge as a PNG. Badge artwork is rendered locally in the browser; handles are not uploaded to a server. The Kingpin level is unlocked by completing the Kingpin Protocol.
+
 ## Local development
 
 ```bash
@@ -9,7 +13,11 @@ npm install
 npm run dev
 ```
 
-Build for production with `npm run build` and run with `npm start`.
+Build for production with `npm run build` and run with `npm start`. The `lint` script runs the TypeScript compiler with `tsc --noEmit`.
+
+## Verification status
+
+Automated CI results are still unavailable, and I have not run a production build or browser test, so those remain to be verified before calling the feature production-tested.
 
 ## Before launch
 
