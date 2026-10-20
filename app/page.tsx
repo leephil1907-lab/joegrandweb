@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowRight, Cpu, CircuitBoard, GraduationCap, Mic2, Play, Wrench, Menu, X, ExternalLink, ShieldCheck, Youtube, Code2, Radio } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import CircuitGlow from "@/components/CircuitGlow";
+import SupportSection from "@/components/SupportSection";
 
 const expertise = [
   { icon: Cpu, n: "01", title: "Hardware Hacking", text: "Research, teardowns, reverse engineering, and security analysis of electronic devices.", tag: "HARDWARE / REVERSE ENGINEERING" },
@@ -127,6 +128,8 @@ export default function HomePage() {
           <div className="section-action"><a className="button" href="#contact">Contact Joe <ArrowRight size={15}/></a></div>
         </div>
       </section>
+
+      <SupportSection />
 
       <section className="section" id="contact">
         <div className="container">
