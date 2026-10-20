@@ -5,6 +5,7 @@ import { ArrowRight, Cpu, CircuitBoard, GraduationCap, Mic2, Play, Wrench, Menu,
 import Reveal from "@/components/Reveal";
 import CircuitGlow from "@/components/CircuitGlow";
 import SupportSection from "@/components/SupportSection";
+import BadgeGenerator from "@/components/BadgeGenerator";
 
 const expertise = [
   { icon: Cpu, n: "01", title: "Hardware Hacking", text: "Research, teardowns, reverse engineering, and security analysis of electronic devices.", tag: "HARDWARE / REVERSE ENGINEERING" },
@@ -178,6 +179,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <BadgeGenerator />
       <SupportSection />
 
       <section className="section" id="contact">
