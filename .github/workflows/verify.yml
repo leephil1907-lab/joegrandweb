@@ -27,8 +27,6 @@ jobs:
           node-version: 20
       - name: Install project dependencies
         run: npm install
-      - name: Install Playwright test runner
-        run: npm install --no-save @playwright/test
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: TypeScript check
