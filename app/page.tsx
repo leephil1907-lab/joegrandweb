@@ -14,9 +14,12 @@ const expertise = [
 ];
 
 const projects = [
-  { n: "01 / HARDWARE", title: "Hardware hacking experiments", text: "Explorations into the inner workings of electronic devices, from teardown to reverse engineering.", tag: "HARDWARE HACKING" },
-  { n: "02 / ENGINEERING", title: "Product design & electronics", text: "Practical engineering, prototyping, and creative technical projects built around real-world challenges.", tag: "PRODUCT DESIGN" },
-  { n: "03 / SECURITY", title: "Security research & demos", text: "Investigating device security and showing the process, tools, and lessons behind the findings.", tag: "SECURITY RESEARCH" },
+  { n: "01 / FAULT INJECTION", title: "STM32 Fault Injection", text: "Research into microcontroller protection, voltage glitching, and repeatable fault-injection techniques.", tag: "HARDWARE SECURITY", href: "https://grandideastudio.com/portfolio/library/intro-to-fault-injection/" },
+  { n: "02 / WALLET SECURITY", title: "Cryptocurrency Wallet Security", text: "Hardware wallet research and demonstrations exploring device security and recovery.", tag: "DEVICE SECURITY", href: "https://grandideastudio.com/" },
+  { n: "03 / DEF CON", title: "DEF CON Electronic Badges", text: "Interactive electronic badges that helped define a playful, inventive part of hacker culture.", tag: "BADGELIFE", href: "https://joegrand.com/" },
+  { n: "04 / ENGINEERING", title: "Grand Idea Studio", text: "Technology development, licensing, and consulting across electronics and embedded systems.", tag: "PRODUCT DESIGN", href: "https://grandideastudio.com/" },
+  { n: "05 / MEDIA", title: "Prototype This!", text: "A Discovery Channel series following the real-life design process behind ambitious prototypes.", tag: "ENGINEERING MEDIA", href: "https://www.imdb.com/title/tt1285035/" },
+  { n: "06 / FIELD NOTES", title: "Hacker pLANeT", text: "A video series exploring hacker culture, local flavor, and interesting places around the world.", tag: "VIDEO SERIES", href: "https://joegrand.com/" },
 ];
 
 const videos = [
@@ -94,7 +97,7 @@ export default function HomePage() {
             <a className="video-placeholder" href={youtube} target="_blank" rel="noopener noreferrer" aria-label="Watch Joe Grand on YouTube">
               <span className="video-scan mono">SIGNAL DETECTED // MEDIA FEED</span><span className="play-button"><Play size={24} fill="currentColor"/></span><span className="video-label mono">JOE GRAND · YOUTUBE</span>
             </a>
-            <div className="video-copy"><div className="eyebrow mono">WATCH / LEARN / REPEAT</div><h3>Step inside the hardware.</h3><p>Explore Joe’s YouTube channel for hardware hacking, electronics, security research, tools, and engineering projects.</p><div style={{marginTop:18}}><a className="button" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Watch on YouTube <ExternalLink size={14}/></a></div><p className="video-note">Featured video preview links to the official channel. Connect a verified video ID to embed a specific video here.</p></div>
+            <div className="video-copy"><div className="eyebrow mono">WATCH / LEARN / REPEAT</div><h3>Step inside the hardware.</h3><p>Explore Joe’s YouTube channel for hardware hacking, electronics, security research, tools, and engineering projects.</p><div style={{marginTop:18}}><a className="button" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Watch on YouTube <ExternalLink size={14}/></a></div></div>
           </div>
         </div>
       </section>
@@ -140,7 +143,7 @@ export default function HomePage() {
           <div className="section-head"><div><div className="eyebrow mono">04 / WATCH & LEARN</div><h2>Latest <span>Videos</span></h2></div><p className="section-intro">Watch the newest videos from Joe’s YouTube channel — covering hardware hacking, electronics, security research, tools, and engineering projects.</p></div>
           <Reveal className="video-grid">{videos.map((v,i)=><a className="video-card" key={v.title} href={youtube} target="_blank" rel="noopener noreferrer"><div className="video-thumb"><span className="thumb-index mono">0{i+1} / MEDIA</span><span className="thumb-icon"><Play size={22} fill="currentColor"/></span><span className="thumb-bottom mono">{v.category}</span></div><div className="video-info"><span className="video-category mono">{v.type}</span><h3>{v.title}</h3><span className="text-link">Watch on YouTube <ArrowRight size={14}/></span></div></a>)}</Reveal>
           <div className="section-action"><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer">View All Videos <ArrowRight size={15}/></a><a className="text-link" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Subscribe on YouTube</a></div>
-          <p className="content-note mono">CHANNEL LINK ACTIVE / INDIVIDUAL VIDEO EMBEDS REQUIRE VERIFIED VIDEO IDS</p>
+          <p className="content-note mono">OFFICIAL CHANNEL / HARDWARE RESEARCH / ENGINEERING PROJECTS</p>
         </div>
       </section>
 
