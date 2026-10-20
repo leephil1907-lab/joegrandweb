@@ -59,9 +59,6 @@ export async function POST(request: Request) {
           controller.close();
         }
       },
-      cancel() {
-        stream.controller.abort();
-      },
     });
 
     return new Response(body, {
