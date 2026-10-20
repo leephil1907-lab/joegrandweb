@@ -56,7 +56,8 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="hero" id="home">\n        <CircuitGlow />
+      <section className="hero" id="home">
+        <CircuitGlow />
         <div className="container hero-inner">
           <div>
             <div className="eyebrow mono">HARDWARE HACKING. ELECTRONICS. SECURITY RESEARCH.</div><div className="kingpin-badge mono">KNOWN IN THE LAB AS <strong>KINGPIN</strong></div>
