@@ -19,9 +19,21 @@ npm run dev
 
 Build for production with `npm run build` and run with `npm start`. The `lint` script runs the TypeScript compiler with `tsc --noEmit`.
 
-## Verification status
+## Verification
 
-Automated CI results are still unavailable, and I have not run a production build or browser test, so those remain to be verified before calling the feature production-tested.
+The GitHub Actions workflow `.github/workflows/verify.yml` runs the TypeScript check (`npm run lint`), production build (`npm run build`), and Playwright browser tests (`npx playwright test`) on pushes and pull requests targeting `main`. Playwright is declared in `devDependencies`; Chromium is installed by the workflow.
+
+Run the same checks locally after installing dependencies and Chromium:
+
+```bash
+npm install
+npx playwright install chromium
+npm run lint
+npm run build
+npx playwright test
+```
+
+Do not consider the feature production-tested until all three checks pass in CI.
 
 ## Before launch
 
