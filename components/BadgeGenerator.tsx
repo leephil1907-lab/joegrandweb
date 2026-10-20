@@ -39,7 +39,7 @@ export default function BadgeGenerator() {
   useEffect(() => {
     setBadgeId(generateBadgeId());
     try {
-      if (localStorage.getItem("joegrand-kingpin-unlocked") === "true") {
+      if (localStorage.getItem("joegrand-kingpin-protocol-complete") === "true") {
         localStorage.setItem("joegrand-badge-level", "Kingpin");
         setLevel("Kingpin");
       } else {
@@ -187,7 +187,7 @@ export default function BadgeGenerator() {
   function chooseLevel(nextLevel: (typeof levels)[number]) {
     if (nextLevel === "Kingpin") {
       let isUnlocked = false;
-      try { isUnlocked = localStorage.getItem("joegrand-kingpin-unlocked") === "true"; } catch { /* Local storage may be unavailable. */ }
+      try { isUnlocked = localStorage.getItem("joegrand-kingpin-protocol-complete") === "true"; } catch { /* Local storage may be unavailable. */ }
       if (!isUnlocked) return;
     }
     setLevel(nextLevel);
