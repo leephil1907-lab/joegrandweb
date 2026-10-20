@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowDownRight, ArrowRight, Cpu, CircuitBoard, GraduationCap, Mic2, Play, Wrench, Menu, X, ExternalLink, ShieldCheck, Youtube, Mail, Code2, Radio } from "lucide-react";
+import { ArrowRight, Cpu, CircuitBoard, GraduationCap, Mic2, Play, Wrench, Menu, X, ExternalLink, ShieldCheck, Youtube, Code2, Radio } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import CircuitGlow from "@/components/CircuitGlow";
 
 const expertise = [
   { icon: Cpu, n: "01", title: "Hardware Hacking", text: "Research, teardowns, reverse engineering, and security analysis of electronic devices.", tag: "HARDWARE / REVERSE ENGINEERING" },
@@ -45,7 +47,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="hero" id="home">
+      <section className="hero" id="home">\n        <CircuitGlow />
         <div className="container hero-inner">
           <div>
             <div className="eyebrow mono">HARDWARE HACKING. ELECTRONICS. SECURITY RESEARCH.</div>
@@ -85,21 +87,21 @@ export default function HomePage() {
       <section className="section" id="about">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">01 / ABOUT JOE</div><h2>Who Is <span>Joe Grand?</span></h2></div><p className="section-intro">An engineer’s mindset, a hacker’s curiosity, and a teacher’s instinct to share what works.</p></div>
-          <div className="about-layout"><div className="about-index mono"><span>JG_001</span><div className="about-symbol"><Code2 size={48}/></div><span>COMPUTER ENGINEER<br/>HARDWARE HACKER</span></div><div className="about-copy"><p>Joe Grand, also known as Kingpin, is a computer engineer, hardware hacker, inventor, and educator. He has spent decades exploring, designing, and manipulating electronic systems, sharing his work through videos, talks, training, and engineering projects.</p><p>From hardware security research to product design and public education, Joe makes complex technology understandable, practical, and engaging.</p><a className="text-link" href={officialSite} target="_blank" rel="noopener noreferrer">Learn More About Joe <ArrowRight size={15}/></a></div></div>
+          <div className="about-layout"><div className="about-index mono"><span>JG_001</span><div className="about-symbol"><Code2 size={48}/></div><span>COMPUTER ENGINEER<br/>HARDWARE HACKER</span></div><Reveal className="about-copy"><p>Joe Grand, also known as Kingpin, is a computer engineer, hardware hacker, inventor, and educator. He has spent decades exploring, designing, and manipulating electronic systems, sharing his work through videos, talks, training, and engineering projects.</p><p>From hardware security research to product design and public education, Joe makes complex technology understandable, practical, and engaging.</p><a className="text-link" href={officialSite} target="_blank" rel="noopener noreferrer">Learn More About Joe <ArrowRight size={15}/></a></div></div>
         </div>
       </section>
 
       <section className="section" id="expertise">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">02 / EXPERTISE</div><h2>What Joe <span>Does</span></h2></div><p className="section-intro">Hardware hacking, electronics, security research, product design, and hands-on education.</p></div>
-          <div className="grid-4">{expertise.map(({icon:Icon,n,title,text,tag})=><article className="card expertise-card" key={n}><div className="card-topline"><span className="card-number mono">[{n}]</span><Icon size={21}/></div><h3>{title}</h3><p>{text}</p><span className="card-tag mono">{tag}</span></article>)}</div>
+          <Reveal className="grid-4">{expertise.map(({icon:Icon,n,title,text,tag})=><article className="card expertise-card" key={n}><div className="card-topline"><span className="card-number mono">[{n}]</span><Icon size={21}/></div><h3>{title}</h3><p>{text}</p><span className="card-tag mono">{tag}</span></article>)}</div>
         </div>
       </section>
 
       <section className="section" id="projects">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">03 / SELECTED WORK</div><h2>Selected <span>Projects</span></h2></div><p className="section-intro">Explore a selection of Joe’s hardware hacking experiments, engineering projects, security research, and public demonstrations.</p></div>
-          <div className="grid-3">{projects.map(p=><article className="card project-card" key={p.n}><div className="project-number mono">{p.n}</div><h3>{p.title}</h3><p>{p.text}</p><span className="card-tag mono">{p.tag} ↗</span></article>)}</div>
+          <Reveal className="grid-3">{projects.map(p=><article className="card project-card" key={p.n}><div className="project-number mono">{p.n}</div><h3>{p.title}</h3><p>{p.text}</p><span className="card-tag mono">{p.tag} ↗</span></article>)}</div>
           <div className="section-action"><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer">View Projects on YouTube <ArrowRight size={15}/></a></div>
         </div>
       </section>
@@ -107,7 +109,7 @@ export default function HomePage() {
       <section className="section" id="videos">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">04 / WATCH & LEARN</div><h2>Latest <span>Videos</span></h2></div><p className="section-intro">Watch the newest videos from Joe’s YouTube channel — covering hardware hacking, electronics, security research, tools, and engineering projects.</p></div>
-          <div className="video-grid">{videos.map((v,i)=><a className="video-card" key={v.title} href={youtube} target="_blank" rel="noopener noreferrer"><div className="video-thumb"><span className="thumb-index mono">0{i+1} / MEDIA</span><span className="thumb-icon"><Play size={22} fill="currentColor"/></span><span className="thumb-bottom mono">{v.category}</span></div><div className="video-info"><span className="video-category mono">{v.type}</span><h3>{v.title}</h3><span className="text-link">Watch on YouTube <ArrowRight size={14}/></span></div></a>)}</div>
+          <Reveal className="video-grid">{videos.map((v,i)=><a className="video-card" key={v.title} href={youtube} target="_blank" rel="noopener noreferrer"><div className="video-thumb"><span className="thumb-index mono">0{i+1} / MEDIA</span><span className="thumb-icon"><Play size={22} fill="currentColor"/></span><span className="thumb-bottom mono">{v.category}</span></div><div className="video-info"><span className="video-category mono">{v.type}</span><h3>{v.title}</h3><span className="text-link">Watch on YouTube <ArrowRight size={14}/></span></div></a>)}</div>
           <div className="section-action"><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer">View All Videos <ArrowRight size={15}/></a><a className="text-link" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Subscribe on YouTube</a></div>
           <p className="content-note mono">CHANNEL LINK ACTIVE / INDIVIDUAL VIDEO EMBEDS REQUIRE VERIFIED VIDEO IDS</p>
         </div>
@@ -116,7 +118,7 @@ export default function HomePage() {
       <section className="section" id="services">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">05 / WORK TOGETHER</div><h2>Work With <span>Joe</span></h2></div><p className="section-intro">Joe works with organizations, creators, educators, and technical teams on hardware security, product development, training, speaking, and creative engineering projects.</p></div>
-          <div className="grid-4 services-grid">
+          <Reveal className="grid-4 services-grid">
             <article className="card"><div className="card-icon"><Wrench size={21}/></div><h3>Consulting</h3><p>Practical guidance on hardware security, product design, and technical problem-solving.</p><span className="card-tag mono">TECHNICAL GUIDANCE ↗</span></article>
             <article className="card"><div className="card-icon"><Mic2 size={21}/></div><h3>Speaking</h3><p>Conference talks, interviews, panels, and public presentations.</p><span className="card-tag mono">TALKS & EVENTS ↗</span></article>
             <article className="card"><div className="card-icon"><GraduationCap size={21}/></div><h3>Training</h3><p>Hands-on workshops and educational sessions on hardware hacking and security thinking.</p><span className="card-tag mono">LEARN BY DOING ↗</span></article>
@@ -128,7 +130,7 @@ export default function HomePage() {
 
       <section className="section" id="contact">
         <div className="container">
-          <div className="cta-panel"><div className="cta-circuit mono">OPEN CHANNEL / 06</div><div className="eyebrow mono">GET IN TOUCH</div><h2>Let’s build something <span>interesting.</span></h2><p>Interested in collaborating, inviting Joe to speak, booking training, or discussing a hardware or electronics project?</p><div className="hero-actions cta-actions"><a className="button" href={officialSite} target="_blank" rel="noopener noreferrer">Contact Joe <ArrowRight size={15}/></a><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Watch on YouTube</a></div><p className="contact-note">Use Joe’s official website for contact details and current enquiry routes.</p></div>
+          <Reveal className="cta-panel"><div className="cta-circuit mono">OPEN CHANNEL / 06</div><div className="eyebrow mono">GET IN TOUCH</div><h2>Let’s build something <span>interesting.</span></h2><p>Interested in collaborating, inviting Joe to speak, booking training, or discussing a hardware or electronics project?</p><div className="hero-actions cta-actions"><a className="button" href={officialSite} target="_blank" rel="noopener noreferrer">Contact Joe <ArrowRight size={15}/></a><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Watch on YouTube</a></div><p className="contact-note">Use Joe’s official website for contact details and current enquiry routes.</p></Reveal>
         </div>
       </section>
 
