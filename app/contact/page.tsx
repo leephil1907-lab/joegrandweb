@@ -3,6 +3,7 @@ import { ExternalLink, Mail, ShieldCheck } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
+import SupportSection from "@/components/SupportSection";
 import { officialLinks } from "@/content/site-content";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function ContactPage() {
           <div><p className="punk-kicker">WRITE THE BRIEF</p><h2>What are you <em>working on?</em></h2><ContactForm /></div>
         </div>
       </section>
+      <SupportSection />
       <PunkFooter />
     </main>
   );

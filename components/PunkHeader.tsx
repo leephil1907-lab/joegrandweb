@@ -14,7 +14,7 @@ const links = [
   { href: "/training", label: "Training" },
   { href: "/community", label: "Community" },
   { href: "/contact", label: "Contact" },
-  { href: "/#badge-generator", label: "Badge Lab" },
+  { href: "/badge-lab", label: "Badge Lab" },
 ];
 
 type PunkHeaderProps = { active?: string };

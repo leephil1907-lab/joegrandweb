@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Bot, Send, Trash2, X, Sparkles, User, MessageCircle, ExternalLink } from "lucide-react";
@@ -11,7 +12,7 @@ const baseSuggestions = ["Tell me about Joe Grand", "What projects does Joe work
 const welcome: Message = {
   id: 1,
   sender: "bot",
-  text: "Hi! I’m **Joe Grand’s AI assistant**. Ask me about hardware hacking, electronics, security research, videos, training, or collaborations.",
+  text: "Hi! I’m **Joe Grand’s website assistant**. Ask me about hardware hacking, electronics, security research, videos, training, collaborations, or the Kingpin Badge Lab.",
 };
 
 function suggestionsFor(text: string) {
@@ -29,6 +30,7 @@ export default function LiveChat() {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([welcome]);
   const [suggestions, setSuggestions] = useState<string[]>(baseSuggestions);
+  const [assistantMode, setAssistantMode] = useState<"ai" | "guide" | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const reduceMotion = useReducedMotion();
@@ -86,6 +88,8 @@ export default function LiveChat() {
         const reason = await response.text();
         throw new Error(reason || "The assistant is temporarily unavailable.");
       }
+      const mode = response.headers.get("X-Joegrand-Assistant-Mode");
+      setAssistantMode(mode === "guide" ? "guide" : "ai");
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let answer = "";
@@ -111,6 +115,7 @@ export default function LiveChat() {
     abortRef.current?.abort();
     setMessages([welcome]);
     setSuggestions(baseSuggestions);
+    setAssistantMode(null);
     try { localStorage.removeItem(STORAGE_KEY); } catch { /* Storage may be unavailable. */ }
   }
 
@@ -150,7 +155,7 @@ export default function LiveChat() {
           >
             <header className="live-chat-header">
               <div className="live-chat-avatar"><Sparkles size={20} /><span /></div>
-              <div className="live-chat-heading"><strong>Joe Grand AI Assistant</strong><small><i /> WEBSITE SUPPORT · AI ASSISTANT</small></div>
+              <div className="live-chat-heading"><strong>Joe Grand Assistant</strong><small><i /> WEBSITE SUPPORT · {assistantMode === "guide" ? "SITE GUIDE" : "AI ASSISTANT"}</small></div>
               <button type="button" className="live-chat-icon-button" onClick={clearChat} aria-label="Clear conversation"><Trash2 size={16} /></button>
               <button type="button" className="live-chat-icon-button" onClick={() => setOpen(false)} aria-label="Close chat"><X size={18} /></button>
             </header>
@@ -179,7 +184,7 @@ export default function LiveChat() {
               <input id="live-chat-input" value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ask a question..." autoComplete="off" maxLength={2000} />
               <button type="submit" aria-label="Send message" disabled={loading || !input.trim()}><Send size={17} /></button>
             </form>
-            <p className="live-chat-disclaimer">AI-generated answers may be incomplete. For formal enquiries, use <a href="https://joegrand.com/" target="_blank" rel="noopener noreferrer">Joe’s official website</a>.</p>
+            <p className="live-chat-disclaimer">{assistantMode === "guide" ? "Guide answers use public site information." : "AI-generated answers may be incomplete."} For formal enquiries, use <Link href="/contact">the contact page</Link>.</p>
           </motion.section>
         )}
       </AnimatePresence>

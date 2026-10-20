@@ -1,75 +1,23 @@
-"use client";
-
-import {
-  ArrowRight,
-  ExternalLink,
-  Play,
-  ShieldCheck,
-  Wrench,
-  Youtube,
-} from "lucide-react";
-import BadgeGenerator from "@/components/BadgeGenerator";
-import SupportSection from "@/components/SupportSection";
+import Link from "next/link";
+import { ArrowRight, CircuitBoard, MessageCircle, Play, Radio, Sparkles, Wrench, Youtube } from "lucide-react";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
-import { featuredVideos, projectCatalog } from "@/content/site-content";
 
-const youtube = "https://www.youtube.com/@JoeGrand";
-const videoUrl = (id: string) => `https://www.youtube.com/watch?v=${id}`;
-
-const posters = [
-  {
-    kicker: "Projects + Engineering",
-    title: "Grand Idea Studio",
-    image: "/punk-assets/gis.webp",
-    alt: "Electronics and engineering workbench",
-    href: "/projects",
-    cta: "Explore the work",
-    tape: "/punk-assets/tape-three.png",
-    tone: "cream",
-  },
-  {
-    kicker: "Watch + Learn",
-    title: "YouTube",
-    image: "/punk-assets/youtube.webp",
-    alt: "Joe Grand YouTube video collage",
-    href: "/videos",
-    cta: "Watch & learn",
-    tape: "/punk-assets/tape-two.png",
-    tone: "pink",
-  },
-  {
-    kicker: "Make + Share",
-    title: "Community",
-    image: "/punk-assets/discord.webp",
-    alt: "Community conversation graphics",
-    href: "/community",
-    cta: "Join the conversation",
-    tape: "/punk-assets/tape-one.png",
-    tone: "lime",
-  },
+const routes = [
+  { number: "01", title: "About Joe", text: "The person behind the bench, the badges, and the habit of asking better questions.", href: "/about", label: "Read the story", icon: Radio, tone: "is-pink" },
+  { number: "02", title: "Projects", text: "A field guide to hardware research, tools, security work, and badgelife.", href: "/projects", label: "Open the field guide", icon: CircuitBoard, tone: "is-yellow" },
+  { number: "03", title: "Videos", text: "Hardware deep dives, experiments, and public investigations from the channel.", href: "/videos", label: "Watch the archive", icon: Play, tone: "is-lime" },
+  { number: "04", title: "Training", text: "Hands-on routes into inspecting, testing, and understanding electronic systems.", href: "/training", label: "Explore training", icon: Wrench, tone: "is-purple" },
+  { number: "05", title: "Community", text: "Follow the public channels, trade notes, and keep the curiosity moving.", href: "/community", label: "Join the conversation", icon: MessageCircle, tone: "is-cream" },
+  { number: "06", title: "Badge Lab", text: "Build a Kingpin badge, tune the signal, and download your creation locally.", href: "/badge-lab", label: "Enter the lab", icon: Sparkles, tone: "is-black" },
 ];
-
-const links = [
-  { tag: "Hardware hacking", title: "STM32 Fault Injection", meta: "Read the research", href: "https://grandideastudio.com/portfolio/library/intro-to-fault-injection/" },
-  { tag: "Training course", title: "Hands-on Hardware Hacking", meta: "Learn by doing", href: "https://grandideastudio.com/training/" },
-  { tag: "Information", title: "Joe Grand / Kingpin", meta: "Biography & history", href: "https://grandideastudio.com/about/" },
-  { tag: "Watch", title: "Prototype This!", meta: "Discovery Channel", href: "https://www.imdb.com/title/tt1285035/" },
-  { tag: "Listen", title: "Darknet Diaries", meta: "Episode 155: Kingpin", href: "https://darknetdiaries.com/episode/155/" },
-  { tag: "Badgelife", title: "DEF CON Badges", meta: "Where it began", href: "https://defcon.org/" },
-];
-
-
-function Sticker({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <span className={`sticker ${className}`}>{children}</span>;
-}
 
 export default function HomePage() {
   return (
     <main id="main-content" className="site-shell punk-site">
       <PunkHeader active="home" />
 
-      <section id="home" className="punk-masthead" aria-labelledby="masthead-title">
+      <section className="punk-masthead" aria-labelledby="masthead-title">
         <div className="punk-masthead-paper" aria-hidden="true" />
         <div className="container punk-masthead-inner">
           <div>
@@ -78,7 +26,7 @@ export default function HomePage() {
             <p className="punk-masthead-sub">KNOWN AS <strong>KINGPIN</strong> IN THE LAB</p>
           </div>
           <div className="punk-masthead-stickers" aria-label="Joe Grand areas of work">
-            <Sticker>HARDWARE</Sticker><Sticker className="is-pink">SECURITY</Sticker><Sticker className="is-black">BADGELIFE</Sticker>
+            <span className="sticker">HARDWARE</span><span className="sticker is-pink">SECURITY</span><span className="sticker is-black">BADGELIFE</span>
           </div>
         </div>
       </section>
@@ -87,15 +35,15 @@ export default function HomePage() {
         <span>HARDWARE HACKING</span><i /> <span>ELECTRONICS</span><i /> <span>SECURITY RESEARCH</span><i /> <span>CREATIVE ENGINEERING</span>
       </section>
 
-      <section className="punk-hero" aria-label="Introduction">
+      <section className="punk-hero punk-home-hero" aria-label="Introduction">
         <div className="container punk-hero-grid">
           <div className="punk-hero-copy">
-            <p className="punk-kicker">NEW SIGNAL / OPEN CHANNEL</p>
+            <p className="punk-kicker">FIELD GUIDE / MULTI-PAGE ARCHIVE</p>
             <h2>Curiosity is a <em>superpower.</em></h2>
-            <p>Joe Grand explores how electronic devices really work — then shares the clues through projects, tools, talks, training, and videos.</p>
+            <p>Follow a route into Joe Grand&apos;s projects, video archive, training, community, and the Kingpin Badge Lab. Every part of the work has its own page.</p>
             <div className="punk-actions">
-              <a className="punk-button is-yellow" href="/videos"><Play size={15} fill="currentColor" /> Watch the work</a>
-              <a className="punk-text-link" href="#badge-generator">Make a Kingpin badge <ArrowRight size={16} /></a>
+              <Link className="punk-button is-yellow" href="/projects"><CircuitBoard size={15} /> Open the field guide</Link>
+              <Link className="punk-text-link" href="/badge-lab">Enter Badge Lab <ArrowRight size={16} /></Link>
             </div>
           </div>
           <div className="punk-photo-frame">
@@ -107,118 +55,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="punk-posters" aria-label="Explore Joe Grand's work">
+      <section className="punk-route-index" aria-labelledby="route-index-title">
         <div className="container">
           <div className="punk-section-head compact">
-            <div><p className="punk-kicker">THREE WAYS IN</p><h2>Pick a <em>rabbit hole.</em></h2></div>
-            <p>Projects to inspect, videos to watch, and a community that keeps asking what else is possible.</p>
+            <div><p className="punk-kicker">SITE INDEX / SIX ROUTES</p><h2 id="route-index-title">Choose a page,<br /><em>not a scroll.</em></h2></div>
+            <p>This is a field guide rather than a single long landing page. Pick a route; the next page loads with a signal transition.</p>
           </div>
-          <div className="punk-poster-grid">
-            {posters.map((poster) => (
-              <div className={`punk-poster-column ${poster.tone}`} key={poster.title}>
-                <img src={poster.tape} className="punk-tape" alt="" aria-hidden="true" />
-                <a className="punk-poster" href={poster.href}>
-                  <span className="punk-poster-kicker">{poster.kicker}</span>
-                  <strong>{poster.title}</strong>
-                  <span className="punk-poster-image"><img src={poster.image} alt={poster.alt} /></span>
-                  <span className="punk-poster-cta">{poster.cta} <ArrowRight size={16} /></span>
-                </a>
-              </div>
+          <div className="punk-route-grid">
+            {routes.map(({ number, title, text, href, label, icon: Icon, tone }) => (
+              <Link key={href} href={href} className={`punk-route-card ${tone}`}>
+                <span className="punk-route-number">{number}</span>
+                <span className="punk-route-icon"><Icon size={25} aria-hidden="true" /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <span className="punk-route-action">{label} <ArrowRight size={15} /></span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="punk-link-board" aria-label="Research, training and media links">
-        <div className="container">
-          <div className="punk-link-board-title"><span>PINBOARD / 01</span><strong>Stuff worth following</strong></div>
-          <div className="punk-link-grid">
-            {links.map((link, index) => (
-              <a className={`punk-link-card card-${(index % 3) + 1}`} href={link.href} target="_blank" rel="noopener noreferrer" key={link.title}>
-                <span>{link.tag}</span><strong>{link.title}</strong><small>{link.meta} <ExternalLink size={12} /></small>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="punk-bio-section">
-        <div className="container punk-bio-grid">
-          <div className="punk-bio-copy">
-            <p className="punk-kicker">THE PERSON BEHIND THE BENCH</p>
-            <h2>Joe <em>Grand.</em></h2>
-            <p>Computer engineer. Hardware hacker. Inventor. Educator. Joe is known for creating the first electronic badges for DEF CON, working with L0pht Heavy Industries, and helping make the inner workings of technology more approachable.</p>
-            <p>His work moves between meticulous hardware research and a wonderfully human instinct to teach, tinker, and share.</p>
-            <a className="punk-button is-outline" href="/about">Read the full biography <ArrowRight size={15} /></a>
-          </div>
-          <div className="punk-tv-wrap">
-            <Sticker className="is-pink punk-tv-sticker">NO BLACK BOXES</Sticker>
-            <img src="/youtube-assets/joe-grand-youtube-avatar.jpg" className="punk-tv-screen" alt="Joe Grand with an electronic boombox, from the official YouTube channel" />
-            <img src="/punk-assets/television.png" className="punk-tv" alt="" aria-hidden="true" />
-            <img src="/punk-assets/scribble-resistor.png" className="punk-resistor" alt="" aria-hidden="true" />
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" className="punk-work-section">
-        <div className="container">
-          <div className="punk-section-head">
-            <div><p className="punk-kicker">SELECTED WORK / 02</p><h2>Projects with <em>teeth.</em></h2></div>
-            <p>Hardware security, playful inventions, media experiments, and practical research built for people who want to look closer.</p>
-          </div>
-          <div className="punk-project-grid">
-            {projectCatalog.slice(0, 4).map((project, index) => (
-              <a className="punk-project" href={`/projects#${project.id}`} key={project.id}>
-                <span className="punk-project-number">0{index + 1}</span>
-                <h3>{project.title}</h3>
-                <p>{project.text}</p>
-                <span className="punk-project-label">{project.tags[0]} <ArrowRight size={15} /></span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="videos" className="punk-video-section">
-        <div className="container">
-          <div className="punk-section-head">
-            <div><p className="punk-kicker">WATCH + LEARN / 03</p><h2>Pull up a <em>chair.</em></h2></div>
-            <a className="punk-text-link" href="/videos">Browse the video library <ArrowRight size={17} /></a>
-          </div>
-          <div className="punk-video-grid">
-            {featuredVideos.slice(0, 3).map((video, index) => (
-              <a className="punk-video-card" href={videoUrl(video.id)} target="_blank" rel="noopener noreferrer" key={video.id}>
-                <span className="punk-video-thumb" style={{ backgroundImage: `linear-gradient(180deg, rgba(10,10,10,.04), rgba(10,10,10,.64)), url(https://i.ytimg.com/vi/${video.id}/hqdefault.jpg)` }}>
-                  <span>0{index + 1} / {video.category}</span><b><Play size={24} fill="currentColor" /></b>
-                </span>
-                <span className="punk-video-info"><small>{video.category}</small><strong>{video.title}</strong><em>Watch video <ArrowRight size={14} /></em></span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="punk-principles" aria-label="Joe Grand approach">
-        <div className="container punk-principle-grid">
-          <div><span>01</span><strong>Observe the system.</strong><p>Every detail is a clue.</p></div>
-          <div><span>02</span><strong>Test the assumptions.</strong><p>Black boxes are invitations.</p></div>
-          <div><span>03</span><strong>Share the method.</strong><p>Curiosity grows in public.</p></div>
-        </div>
-      </section>
-
-      <BadgeGenerator />
-      <SupportSection />
-
-      <section id="contact" className="punk-contact-section">
-        <div className="container punk-contact-card">
-          <div className="punk-contact-art" aria-hidden="true"><span>JG</span><i /><i /><i /></div>
+      <section className="punk-home-dispatch" aria-labelledby="dispatch-title">
+        <div className="container punk-home-dispatch-grid">
           <div>
-            <p className="punk-kicker">OPEN CHANNEL / 04</p>
-            <h2>Let’s make something <em>interesting.</em></h2>
-            <p>For collaboration, talks, training, or a hard technical problem, use Joe’s official site to find the right route.</p>
-            <div className="punk-actions"><a className="punk-button is-yellow" href="/contact">Contact Joe <ArrowRight size={15} /></a><a className="punk-text-link" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={17} /> Subscribe on YouTube</a></div>
+            <p className="punk-kicker">START ANYWHERE / KEEP DIGGING</p>
+            <h2 id="dispatch-title">No black boxes.<br /><em>Just better clues.</em></h2>
+            <p>Each route is focused on one part of the work, so you can move from hardware research to training, community, or the video archive without losing the thread.</p>
+          </div>
+          <div className="punk-dispatch-stack">
+            <Link href="/videos" className="punk-dispatch-card is-video"><span><Play size={18} fill="currentColor" /> VIDEO ARCHIVE</span><strong>Watch the work unfold.</strong><small>Experiments, investigations, and hardware stories <ArrowRight size={15} /></small></Link>
+            <Link href="/contact" className="punk-dispatch-card is-contact"><span><MessageCircle size={18} /> OPEN CHANNEL</span><strong>Bring a good question.</strong><small>Collaborations, talks, training, and enquiries <ArrowRight size={15} /></small></Link>
           </div>
         </div>
+      </section>
+
+      <section className="punk-mini-cta">
+        <div className="container"><Youtube size={25} /><div><strong>FIND THE NEXT SIGNAL</strong><p>Follow the official channel for new videos, project updates, and technical field notes.</p></div><a className="punk-button is-yellow" href="https://www.youtube.com/@JoeGrand" target="_blank" rel="noopener noreferrer">Visit YouTube <ArrowRight size={15} /></a></div>
       </section>
 
       <PunkFooter />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowRight, ExternalLink, Github, MessageCircle, Radio } from "lucide-react";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import PunkFooter from "@/components/PunkFooter";
@@ -30,7 +31,7 @@ export default function CommunityPage() {
         <div className="container"><div className="punk-detail-intro"><span>PUBLIC CHANNELS</span><p>Follow the official destinations for conversation, videos, and public project material.</p></div><div className="punk-course-grid">{channels.map(({ title, text, href, label, icon: Icon }) => <article className="punk-course-card" key={title}><Icon size={25} color="#f7d330" /><h2>{title}</h2><p>{text}</p><a href={href} target="_blank" rel="noopener noreferrer">{label} <ExternalLink size={15} /></a></article>)}</div></div>
       </section>
       <section className="punk-newsletter-section"><div className="container punk-newsletter-grid"><div><p className="punk-kicker">STAY IN THE LOOP</p><h2>Field notes, not <em>noise.</em></h2><p>Opt in to occasional updates about new videos, projects, and training.</p></div><NewsletterSignup /></div></section>
-      <section className="punk-mini-cta"><div className="container"><MessageCircle size={25} /><div><strong>START WITH CURIOSITY</strong><p>Need a structured way into the work? Start with a video, browse a project, or look for a hands-on course.</p></div><a className="punk-button is-yellow" href="/training">Explore training <ArrowRight size={15} /></a></div></section>
+      <section className="punk-mini-cta"><div className="container"><MessageCircle size={25} /><div><strong>START WITH CURIOSITY</strong><p>Need a structured way into the work? Start with a video, browse a project, or look for a hands-on course.</p></div><Link className="punk-button is-yellow" href="/training">Explore training <ArrowRight size={15} /></Link></div></section>
       <PunkFooter />
     </main>
   );

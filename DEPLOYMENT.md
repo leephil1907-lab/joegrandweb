@@ -20,8 +20,8 @@ In **Project Settings → Environment Variables**, add only the integrations bei
 | Variable | Purpose | Required for |
 |---|---|---|
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 property identifier, e.g. `G-XXXXXXXXXX` | Opt-in Google Analytics |
-| `OPENAI_API_KEY` | Server-only OpenAI key | AI support chat |
-| `OPENAI_CHAT_MODEL` | Optional chat model override | AI support chat |
+| `OPENAI_API_KEY` | Optional server-only OpenAI key | Enhanced AI support chat; otherwise the built-in public site guide remains available |
+| `OPENAI_CHAT_MODEL` | Optional chat model override | Enhanced AI support chat |
 | `CONTACT_WEBHOOK_URL` | Server-side contact delivery webhook | Contact form |
 | `CONTACT_WEBHOOK_TOKEN` | Optional bearer token for the contact webhook | Contact form |
 | `NEWSLETTER_WEBHOOK_URL` | Server-side subscription delivery webhook | Newsletter form |
