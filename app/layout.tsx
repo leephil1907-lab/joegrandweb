@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     siteName: "Joe Grand",
     title: "Joe Grand | Hardware Hacker, Engineer & Educator",
     description: "Explore hardware hacking, electronics, security research, videos, projects, and training by Joe Grand, also known as Kingpin.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Joe Grand — Hardware Hacker, Engineer & Educator" }],
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Joe Grand — Hardware Hacker, Engineer & Educator" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Joe Grand | Hardware Hacker, Engineer & Educator",
     description: "Explore hardware hacking, electronics, security research, videos, projects, and training by Joe Grand.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
   },
   robots: { index: true, follow: true },
 };
