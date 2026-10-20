@@ -6,6 +6,10 @@ A responsive Next.js App Router site with a dark hardware-lab visual direction, 
 
 The homepage includes an interactive Kingpin Badge Generator. Visitors can enter a handle, choose one of four badge styles and an accent signal, select a hacker level, preview the design on a live canvas, generate a new badge ID, and download the badge as a PNG. Badge artwork is rendered locally in the browser; handles are not uploaded to a server. The Kingpin level is unlocked by completing the Kingpin Protocol.
 
+## YouTube videos
+
+The homepage video section now uses the five YouTube links supplied for this project, with video thumbnails and direct links to each original watch page. The cards use neutral numbered labels rather than guessed video titles; replace those labels with verified titles when YouTube metadata can be confirmed.
+
 ## Local development
 
 ```bash
