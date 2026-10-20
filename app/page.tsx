@@ -51,11 +51,11 @@ export default function HomePage() {
       <section className="hero" id="home">\n        <CircuitGlow />
         <div className="container hero-inner">
           <div>
-            <div className="eyebrow mono">HARDWARE HACKING. ELECTRONICS. SECURITY RESEARCH.</div>
+            <div className="eyebrow mono">HARDWARE HACKING. ELECTRONICS. SECURITY RESEARCH.</div><div className="kingpin-badge mono">KNOWN IN THE LAB AS <strong>KINGPIN</strong></div>
             <h1>Exploring how electronic devices <span>really work.</span></h1>
-            <p className="hero-copy">Joe Grand is a computer engineer and hardware hacker exploring how electronic devices really work — through projects, videos, research, talks, and hands-on training.</p>
-            <div className="hero-actions"><a className="button" href="#featured-video">Watch Latest Video <Play size={15} fill="currentColor"/></a><a className="button secondary" href="#services">Work With Me <ArrowRight size={15}/></a></div>
-            <div className="hero-meta mono"><span><i/> HARDWARE HACKING</span><span><i/> ELECTRONICS</span><span><i/> SECURITY RESEARCH</span><span><i/> PRODUCT DESIGN</span><span><i/> TRAINING</span></div>
+            <p className="hero-copy">Joe Grand, also known as Kingpin, is a computer engineer, hardware hacker, inventor, and educator creating projects, videos, tools, talks, and training that explore how electronic devices really work.</p>
+            <div className="hero-actions"><a className="button" href="#featured-video">Watch Latest Video <Play size={15} fill="currentColor"/></a><a className="button secondary" href="#projects">Explore Projects <ArrowRight size={15}/></a></div>
+            <div className="hero-meta mono"><span><i/> DEF CON BADGE CREATOR</span><span><i/> L0PHT HEAVY INDUSTRIES</span><span><i/> GRAND IDEA STUDIO</span><span><i/> PROTOTYPE THIS</span><span><i/> 25M+ YOUTUBE VIEWS</span></div>
           </div>
           <div className="terminal" aria-label="Hardware lab terminal graphic">
             <div className="terminal-top"><span className="mono">JOE GRAND / HARDWARE LAB</span><span className="terminal-dots"><i/><i/><i/></span><span className="mono">SESSION ACTIVE</span></div>
@@ -69,6 +69,20 @@ export default function HomePage() {
               <div><span className="prompt">lab@joegrand:~$</span> <span className="term-cyan">_</span></div>
             </div>
             <div className="lab-status"><span><i/> SYSTEM READY</span><span className="mono">HW / EE / SEC</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="credibility-strip" aria-label="Career highlights">
+        <div className="container">
+          <p className="eyebrow mono">A CAREER BUILT AROUND HARDWARE, SECURITY, AND INVENTION</p>
+          <div className="credibility-items">
+            <a href="https://grandideastudio.com/about/" target="_blank" rel="noopener noreferrer"><strong>DEF CON</strong><span>Electronic badges</span></a>
+            <a href="https://joegrand.com/" target="_blank" rel="noopener noreferrer"><strong>L0pht</strong><span>Heavy Industries</span></a>
+            <a href="https://www.imdb.com/title/tt1285035/" target="_blank" rel="noopener noreferrer"><strong>Prototype This!</strong><span>Discovery Channel</span></a>
+            <a href="https://grandideastudio.com/" target="_blank" rel="noopener noreferrer"><strong>Grand Idea Studio</strong><span>Founded 2002</span></a>
+            <div><strong>25M+</strong><span>YouTube views</span></div>
+            <a href="https://grandideastudio.com/about/" target="_blank" rel="noopener noreferrer"><strong>U.S. Patents</strong><span>Inventor & designer</span></a>
           </div>
         </div>
       </section>
@@ -88,7 +102,21 @@ export default function HomePage() {
       <section className="section" id="about">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">01 / ABOUT JOE</div><h2>Who Is <span>Joe Grand?</span></h2></div><p className="section-intro">An engineer’s mindset, a hacker’s curiosity, and a teacher’s instinct to share what works.</p></div>
-          <div className="about-layout"><div className="about-index mono"><span>JG_001</span><div className="about-symbol"><Code2 size={48}/></div><span>COMPUTER ENGINEER<br/>HARDWARE HACKER</span></div><Reveal className="about-copy"><p>Joe Grand, also known as Kingpin, is a computer engineer, hardware hacker, inventor, and educator. He has spent decades exploring, designing, and manipulating electronic systems, sharing his work through videos, talks, training, and engineering projects.</p><p>From hardware security research to product design and public education, Joe makes complex technology understandable, practical, and engaging.</p><a className="text-link" href={officialSite} target="_blank" rel="noopener noreferrer">Learn More About Joe <ArrowRight size={15}/></a></Reveal></div>
+          <div className="about-layout"><div className="about-index mono"><span>JG_001</span><div className="about-symbol"><Code2 size={48}/></div><span>COMPUTER ENGINEER<br/>HARDWARE HACKER</span></div><Reveal className="about-copy"><p>Joe Grand is a product designer, hardware hacker, and founder of Grand Idea Studio. He specializes in creating, exploring, manipulating, and teaching about electronic devices.</p><p>Sometimes known as Kingpin, Joe was a member of L0pht Heavy Industries and co-hosted Discovery Channel’s <em>Prototype This!</em>. His work has helped shape hacker culture, hardware security education, and public understanding of technology.</p><a className="text-link" href="https://grandideastudio.com/about/" target="_blank" rel="noopener noreferrer">Read Full Biography <ArrowRight size={15}/></a></Reveal></div>
+        </div>
+      </section>
+
+      <section className="career-section" aria-label="Career timeline and highlights">
+        <div className="container">
+          <div className="career-heading"><div className="eyebrow mono">A CAREER IN HARDWARE</div><h2>From hacker culture to <span>hands-on education.</span></h2></div>
+          <div className="career-timeline">
+            <div><span>01</span><strong>L0pht Heavy Industries</strong><p>Independent security research and hacker culture.</p></div>
+            <div><span>02</span><strong>DEF CON Badges</strong><p>Interactive electronic badges that helped inspire badgelife.</p></div>
+            <div><span>03</span><strong>Prototype This!</strong><p>Engineering ideas brought to life on Discovery Channel.</p></div>
+            <div><span>04</span><strong>Grand Idea Studio</strong><p>Technology development, licensing, consulting, and training.</p></div>
+            <div><span>05</span><strong>YouTube & Training</strong><p>Sharing hardware research with a global audience.</p></div>
+          </div>
+          <div className="stats-row"><div><strong>25M+</strong><span>YouTube views</span></div><div><strong>U.S.</strong><span>Patents</span></div><div><strong>2006–10</strong><span>DEF CON badge era</span></div><div><strong>Since 2002</strong><span>Grand Idea Studio</span></div></div>
         </div>
       </section>
 
@@ -102,7 +130,7 @@ export default function HomePage() {
       <section className="section" id="projects">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">03 / SELECTED WORK</div><h2>Selected <span>Projects</span></h2></div><p className="section-intro">Explore a selection of Joe’s hardware hacking experiments, engineering projects, security research, and public demonstrations.</p></div>
-          <Reveal className="grid-3">{projects.map(p=><article className="card project-card" key={p.n}><div className="project-number mono">{p.n}</div><h3>{p.title}</h3><p>{p.text}</p><span className="card-tag mono">{p.tag} ↗</span></article>)}</Reveal>
+          <Reveal className="grid-3">{projects.map(p=><a className="card project-card" key={p.n} href={p.href} target="_blank" rel="noopener noreferrer"><div className="project-number mono">{p.n}</div><h3>{p.title}</h3><p>{p.text}</p><span className="card-tag mono">{p.tag} ↗</span></a>)}</Reveal>
           <div className="section-action"><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer">View Projects on YouTube <ArrowRight size={15}/></a></div>
         </div>
       </section>
@@ -115,6 +143,24 @@ export default function HomePage() {
           <p className="content-note mono">CHANNEL LINK ACTIVE / INDIVIDUAL VIDEO EMBEDS REQUIRE VERIFIED VIDEO IDS</p>
         </div>
       </section>
+
+      <section className="section training-section" id="training">
+        <div className="container">
+          <div className="section-head"><div><div className="eyebrow mono">06 / LEARN BY DOING</div><h2>Learn <span>Hardware Hacking</span></h2></div><p className="section-intro">Hands-on courses teach the concepts and techniques used to explore, manipulate, and assess electronic systems. No prior hardware, electronics, or security experience is required for the introductory course.</p></div>
+          <div className="course-catalog">
+            <a href="https://grandideastudio.com/training/hardware-hacking-basics/" target="_blank" rel="noopener noreferrer"><span className="course-code mono">COURSE_01 · 2 DAYS</span><h3>Hardware Hacking Basics</h3><p>Reverse engineering, product teardown, circuit-board analysis, signal monitoring, and common hardware attack vectors.</p><span className="course-link">Course details <ArrowRight size={14}/></span></a>
+            <a href="https://grandideastudio.com/training/" target="_blank" rel="noopener noreferrer"><span className="course-code mono">COURSE_02 · WORKSHOP</span><h3>Firmware Extraction & Manipulation</h3><p>Hands-on firmware extraction and system manipulation through on-chip debug interfaces.</p><span className="course-link">Course details <ArrowRight size={14}/></span></a>
+            <a href="https://grandideastudio.com/training/" target="_blank" rel="noopener noreferrer"><span className="course-code mono">COURSE_03 · ADVANCED</span><h3>Defeating Microcontroller Code Protection</h3><p>Advanced techniques for assessing security features designed to prevent unauthorized access.</p><span className="course-link">Course details <ArrowRight size={14}/></span></a>
+            <a href="https://grandideastudio.com/training/" target="_blank" rel="noopener noreferrer"><span className="course-code mono">COURSE_04 · WORKSHOP</span><h3>Hardware Implants & Espionage</h3><p>Explore hardware espionage, supply-chain compromise, and detection of surreptitious hardware.</p><span className="course-link">Course details <ArrowRight size={14}/></span></a>
+            <a href="https://grandideastudio.com/training/" target="_blank" rel="noopener noreferrer"><span className="course-code mono">COURSE_05 · 2 DAYS</span><h3>Cryptocurrency Wallet Exploitation</h3><p>Advanced hardware-security methods for assessing common cryptocurrency hardware wallets.</p><span className="course-link">Course details <ArrowRight size={14}/></span></a>
+          </div>
+          <div className="section-action"><a className="button" href="https://grandideastudio.com/training/" target="_blank" rel="noopener noreferrer">View Training Courses <ArrowRight size={15}/></a><a className="button secondary" href="https://grandideastudio.com/about/" target="_blank" rel="noopener noreferrer">Request Corporate Training <ArrowRight size={15}/></a></div>
+        </div>
+      </section>
+      <section className="community-section">
+        <div className="container community-layout"><div><div className="eyebrow mono">COMMUNITY / SHARED CURIOSITY</div><h2>Join the <span>Community.</span></h2><p>Connect with makers, hackers, engineers, and hardware-security enthusiasts through Joe’s official community and public work.</p></div><div className="community-links"><a href="https://joegrand.com/" target="_blank" rel="noopener noreferrer"><span className="mono">01 / COMMUNITY</span><strong>Official Discord <ExternalLink size={15}/></strong></a><a href="https://www.youtube.com/@JoeGrand" target="_blank" rel="noopener noreferrer"><span className="mono">02 / VIDEO</span><strong>Watch on YouTube <ExternalLink size={15}/></strong></a><a href="https://grandideastudio.com/" target="_blank" rel="noopener noreferrer"><span className="mono">03 / ENGINEERING</span><strong>Grand Idea Studio <ExternalLink size={15}/></strong></a></div></div>
+      </section>
+      <section className="press-section"><div className="container"><div className="eyebrow mono">PRESS / TALKS / INTERVIEWS</div><div className="press-links"><a href="https://darknetdiaries.com/episode/155/" target="_blank" rel="noopener noreferrer">Darknet Diaries · Kingpin <ExternalLink size={13}/></a><a href="https://grandideastudio.com/portfolio/library/intro-to-fault-injection/" target="_blank" rel="noopener noreferrer">Teardown · Fault Injection <ExternalLink size={13}/></a><a href="https://grandideastudio.com/about/" target="_blank" rel="noopener noreferrer">Biography & U.S. Patents <ExternalLink size={13}/></a><a href="https://grandideastudio.com/" target="_blank" rel="noopener noreferrer">Grand Idea Studio <ExternalLink size={13}/></a></div></div></section>
 
       <section className="section" id="services">
         <div className="container">
@@ -140,7 +186,7 @@ export default function HomePage() {
       <footer className="site-footer">
         <div className="container">
           <div className="footer-main"><a href="#home" className="brand"><span className="brand-mark">JG</span><span>JOE<span className="brand-accent">GRAND</span><small>HARDWARE · CURIOSITY · SECURITY</small></span></a><p className="footer-summary">Hardware hacking, electronics, security research, videos, and engineering projects.</p><div className="footer-column"><span className="footer-heading mono">EXPLORE</span><div className="footer-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#videos">Videos</a><a href="#services">Services</a><a href="#contact">Contact</a></div></div><div className="footer-column"><span className="footer-heading mono">CONNECT</span><div className="footer-links"><a href={youtube} target="_blank" rel="noopener noreferrer">YouTube <ExternalLink size={12}/></a><a href={facebook} target="_blank" rel="noopener noreferrer">Facebook <ExternalLink size={12}/></a><a href={officialSite} target="_blank" rel="noopener noreferrer">Official Website <ExternalLink size={12}/></a></div></div></div>
-          <div className="footer-bottom"><span>© {new Date().getFullYear()} Joe Grand. All rights reserved.</span><a href="#home" className="mono back-top">BACK TO TOP ↑</a></div>
+          <div className="footer-bottom"><div><span>© {new Date().getFullYear()} Joe Grand. All rights reserved.</span><p className="protocol-clue mono">SIGNAL ACQUIRED: 25 25 8 8 12 14 12 14 11 7</p></div><a href="#home" className="mono back-top">BACK TO TOP ↑</a></div>
         </div>
       </footer>
     </main>
