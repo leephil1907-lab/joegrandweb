@@ -399,3 +399,39 @@ button,a{-webkit-tap-highlight-color:transparent}
 .protocol-complete{margin-top:25px;padding:24px;border:1px solid rgba(0,230,118,.35);border-radius:15px;background:var(--bg);text-align:center;color:var(--green)}.protocol-complete h3{margin:12px 0;color:var(--text)}.protocol-complete p{color:var(--muted);font-size:.86rem}.protocol-complete span{display:block;margin-top:14px;font-size:.63rem;letter-spacing:.1em}.protocol-complete button{margin-top:20px}
 @media(max-width:760px){.credibility-items{grid-template-columns:repeat(2,minmax(0,1fr))}.credibility-items>a,.credibility-items>div{padding:10px}.career-timeline{grid-template-columns:1fr}.career-timeline>div{border-right:0;border-bottom:1px solid var(--line)}.career-timeline>div:last-child{border-bottom:0}.stats-row{grid-template-columns:repeat(2,minmax(0,1fr))}.course-catalog{grid-template-columns:1fr}.community-layout{grid-template-columns:1fr;gap:22px}.protocol-modal{padding:23px 18px}.protocol-title-row h2{font-size:1.3rem}.protocol-controls{align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){.course-catalog>a,.protocol-options button{transition:none}}
+
+
+/* Kingpin badge generator */
+.badge-generator-section .section-lede{max-width:760px}
+.badge-generator-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:36px;align-items:start}
+.badge-panel,.badge-preview-panel{height:100%;border:1px solid var(--line);border-radius:24px;background:var(--panel);padding:clamp(20px,3vw,32px)}
+.badge-panel-heading{display:flex;align-items:center;gap:12px;margin-bottom:25px}
+.badge-panel-heading h3{font-size:17px;font-weight:750;letter-spacing:-.02em}
+.badge-panel-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;border:1px solid #00e67655;background:var(--bg);color:var(--green);flex:none}
+.badge-field{display:block;margin-top:22px}
+.badge-field>span,.badge-fieldset legend{display:block;margin-bottom:10px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em}
+.badge-field input{display:block;width:100%;border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:13px 14px;color:var(--text);font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.badge-field input:focus{border-color:var(--green);box-shadow:0 0 0 3px #00e67622}
+.badge-fieldset{border:0;padding:0;margin:23px 0 0;min-width:0}
+.badge-style-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.badge-style-options button,.badge-level-options button{min-height:40px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--muted);font-size:12px;font-weight:650;transition:all .18s}
+.badge-style-options button:hover,.badge-level-options button:hover{border-color:var(--green);color:var(--green)}
+.badge-style-options button.is-active,.badge-level-options button.is-active{border-color:var(--green);background:#00e67612;color:var(--green)}
+.badge-color-options{display:flex;flex-wrap:wrap;gap:13px;align-items:center}
+.badge-color-options button{width:35px;height:35px;border-radius:50%;border:3px solid var(--panel);outline:1px solid var(--line);transition:transform .18s,outline-color .18s}
+.badge-color-options button.is-active{outline:2px solid var(--text);transform:scale(1.08)}
+.badge-selected-color{margin-top:9px;color:var(--muted);font-size:12px}
+.badge-level-options{display:flex;flex-wrap:wrap;gap:8px}
+.badge-level-options button.is-locked{opacity:.52;border-style:dashed}
+.badge-level-options button span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;letter-spacing:.06em}
+.badge-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.badge-actions button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:45px;padding:12px 18px;border-radius:999px;background:var(--green);color:#04120a;font-size:13px;font-weight:800;transition:filter .2s,border-color .2s}
+.badge-actions button:hover{filter:brightness(1.08)}
+.badge-actions button.badge-secondary-action{border:1px solid var(--green);background:transparent;color:var(--green)}
+.badge-download-status{margin-top:13px;color:var(--green);font-size:12px}
+.badge-canvas-frame{overflow:hidden;border:1px solid var(--line);border-radius:15px;background:#0b0f0c}
+.badge-canvas-frame canvas{display:block;width:100%;height:auto;aspect-ratio:600/340}
+.badge-privacy-note{margin-top:17px;color:var(--muted);font-size:12px;line-height:1.7}
+.protocol-unlock-badge{display:block!important;margin-top:12px!important;border:1px solid var(--green)!important;background:transparent!important;color:var(--green)!important}
+@media(max-width:760px){.badge-generator-grid{grid-template-columns:minmax(0,1fr);gap:16px}.badge-style-options{grid-template-columns:repeat(2,minmax(0,1fr))}.badge-actions{flex-direction:column}.badge-actions button{width:100%}}
+@media(prefers-reduced-motion:reduce){.badge-style-options button,.badge-level-options button,.badge-color-options button,.badge-actions button{transition:none}}
