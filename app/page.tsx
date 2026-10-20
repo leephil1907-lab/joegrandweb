@@ -24,12 +24,16 @@ const projects = [
 ];
 
 const videos = [
-  { title: "Hardware hacking & device teardowns", category: "HARDWARE HACKING", type: "EXPLORE THE CHANNEL" },
-  { title: "Electronics, tools & engineering", category: "ELECTRONICS", type: "FROM THE WORKBENCH" },
-  { title: "Security research in practice", category: "SECURITY RESEARCH", type: "RESEARCH & DEMOS" },
+  { id: "MhJoJRqJ0Wc", title: "Joe Grand Video 01", category: "YOUTUBE VIDEO", type: "WATCH VIDEO" },
+  { id: "dT9y-KQbqi4", title: "Joe Grand Video 02", category: "YOUTUBE VIDEO", type: "WATCH VIDEO" },
+  { id: "AQpv_6Se6VM", title: "Joe Grand Video 03", category: "YOUTUBE VIDEO", type: "WATCH VIDEO" },
+  { id: "WNpW52x-EWY", title: "Joe Grand Video 04", category: "YOUTUBE VIDEO", type: "WATCH VIDEO" },
+  { id: "4LahQG09NzI", title: "Joe Grand Video 05", category: "YOUTUBE VIDEO", type: "WATCH VIDEO" },
 ];
 
 const youtube = "https://www.youtube.com/@JoeGrand";
+const videoUrl = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+const thumbnailUrl = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const officialSite = "https://joegrand.com/";
 const facebook = "https://www.facebook.com/joegrandofficial";
 
@@ -95,8 +99,8 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">00 / FEATURED VIDEO</div><h2>Real projects. <span>Clear explanations.</span></h2></div><p className="section-intro">Real-world hardware hacking, electronics, and security projects — explained clearly and step by step.</p></div>
           <div className="featured-video">
-            <a className="video-placeholder" href={youtube} target="_blank" rel="noopener noreferrer" aria-label="Watch Joe Grand on YouTube">
-              <span className="video-scan mono">SIGNAL DETECTED // MEDIA FEED</span><span className="play-button"><Play size={24} fill="currentColor"/></span><span className="video-label mono">JOE GRAND · YOUTUBE</span>
+            <a className="video-placeholder" href={videoUrl(videos[0].id)} target="_blank" rel="noopener noreferrer" aria-label="Watch Joe Grand video 1 on YouTube" style={{ backgroundImage: `linear-gradient(rgba(8,12,9,.28), rgba(8,12,9,.68)), url(${thumbnailUrl(videos[0].id)})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+              <span className="video-scan mono">SIGNAL DETECTED // MEDIA FEED</span><span className="play-button"><Play size={24} fill="currentColor"/></span><span className="video-label mono">JOE GRAND · VIDEO 01</span>
             </a>
             <div className="video-copy"><div className="eyebrow mono">WATCH / LEARN / REPEAT</div><h3>Step inside the hardware.</h3><p>Explore Joe’s YouTube channel for hardware hacking, electronics, security research, tools, and engineering projects.</p><div style={{marginTop:18}}><a className="button" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Watch on YouTube <ExternalLink size={14}/></a></div></div>
           </div>
@@ -142,7 +146,7 @@ export default function HomePage() {
       <section className="section" id="videos">
         <div className="container">
           <div className="section-head"><div><div className="eyebrow mono">04 / WATCH & LEARN</div><h2>Latest <span>Videos</span></h2></div><p className="section-intro">Watch the newest videos from Joe’s YouTube channel — covering hardware hacking, electronics, security research, tools, and engineering projects.</p></div>
-          <Reveal className="video-grid">{videos.map((v,i)=><a className="video-card" key={v.title} href={youtube} target="_blank" rel="noopener noreferrer"><div className="video-thumb"><span className="thumb-index mono">0{i+1} / MEDIA</span><span className="thumb-icon"><Play size={22} fill="currentColor"/></span><span className="thumb-bottom mono">{v.category}</span></div><div className="video-info"><span className="video-category mono">{v.type}</span><h3>{v.title}</h3><span className="text-link">Watch on YouTube <ArrowRight size={14}/></span></div></a>)}</Reveal>
+          <Reveal className="video-grid">{videos.map((v,i)=><a className="video-card" key={v.id} href={videoUrl(v.id)} target="_blank" rel="noopener noreferrer" aria-label={`Watch ${v.title} on YouTube`}><div className="video-thumb" style={{ backgroundImage: `linear-gradient(rgba(8,12,9,.12), rgba(8,12,9,.68)), url(${thumbnailUrl(v.id)})`, backgroundSize: "cover", backgroundPosition: "center" }}><span className="thumb-index mono">0{i+1} / MEDIA</span><span className="thumb-icon"><Play size={22} fill="currentColor"/></span><span className="thumb-bottom mono">{v.category}</span></div><div className="video-info"><span className="video-category mono">{v.type}</span><h3>{v.title}</h3><span className="text-link">Watch on YouTube <ArrowRight size={14}/></span></div></a>)}</Reveal>
           <div className="section-action"><a className="button secondary" href={youtube} target="_blank" rel="noopener noreferrer">View All Videos <ArrowRight size={15}/></a><a className="text-link" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={16}/> Subscribe on YouTube</a></div>
           <p className="content-note mono">OFFICIAL CHANNEL / HARDWARE RESEARCH / ENGINEERING PROJECTS</p>
         </div>
