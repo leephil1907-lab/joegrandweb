@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { ArrowRight, ExternalLink, Github, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Github, ShieldCheck } from "lucide-react";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
-import { officialLinks, projectCatalog } from "@/content/site-content";
+import { projectCatalog, socialLinks } from "@/content/site-content";
 
 export const metadata: Metadata = {
   title: "Projects & Research",
   description: "A field guide to Joe Grand's hardware hacking projects, security research, electronic badges, and engineering work.",
 };
-
 
 export default function ProjectsPage() {
   return (
@@ -27,14 +27,14 @@ export default function ProjectsPage() {
 
       <section className="punk-detail-section">
         <div className="container">
-          <div className="punk-detail-intro"><span>06 SIGNALS</span><p>Each card points to the authoritative external project, studio, or media destination—so the work stays connected to its original home.</p></div>
+          <div className="punk-detail-intro"><span>06 SIGNALS</span><p>Explore the project field guide without leaving the site. Use the built-in contact route when you want to discuss a project, a collaboration, or a technical question.</p></div>
           <div className="punk-detail-card-grid">
             {projectCatalog.map((project, index) => (
               <article id={project.id} className={`punk-detail-card is-${project.accent}`} key={project.id}>
                 <span className="punk-detail-index">0{index + 1}</span>
                 <div><p>{project.type}</p><h2>{project.title}</h2><p className="punk-detail-copy">{project.text}</p></div>
                 <div className="punk-detail-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <a href={project.href} target="_blank" rel="noopener noreferrer">{project.action} <ExternalLink size={15} /></a>
+                <Link href={`/contact?topic=Project%20enquiry&project=${encodeURIComponent(project.title)}`}>Discuss this project <ArrowRight size={15} /></Link>
               </article>
             ))}
           </div>
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
       </section>
 
       <section className="punk-mini-cta">
-        <div className="container"><Github size={25} /><div><strong>KEEP EXPLORING</strong><p>Code, videos, talks, and external research links make better companions than a static portfolio.</p></div><a className="punk-button is-yellow" href={officialLinks.github} target="_blank" rel="noopener noreferrer">Joe on GitHub <ArrowRight size={15} /></a></div>
+        <div className="container"><Github size={25} /><div><strong>KEEP EXPLORING</strong><p>For public code and repositories, follow Joe&apos;s GitHub profile. For a direct project conversation, stay here and use the Contact page.</p></div><a className="punk-button is-yellow" href={socialLinks.github} target="_blank" rel="noopener noreferrer">Joe on GitHub <ArrowRight size={15} /></a></div>
       </section>
       <PunkFooter />
     </main>

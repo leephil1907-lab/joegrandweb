@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ArrowRight, ExternalLink, Radio } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Radio } from "lucide-react";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
 
@@ -39,7 +40,7 @@ export default function AboutPage() {
             <h2>Curious enough to look <em>closer.</em></h2>
             <p>Joe Grand is the founder of Grand Idea Studio and specializes in creating, exploring, manipulating, and teaching about electronic devices. His work sits at the intersection of product design, hardware security, education, and hacker culture.</p>
             <p>He is known for his work with L0pht Heavy Industries, for creating the first electronic badges for DEF CON, and for co-hosting Discovery Channel&apos;s <i>Prototype This!</i>. Across talks, videos, projects, and training, the recurring theme is a practical one: technical curiosity becomes more powerful when it is shared.</p>
-            <a className="punk-button is-outline" href="https://grandideastudio.com/about/" target="_blank" rel="noopener noreferrer">Read on Grand Idea Studio <ExternalLink size={15} /></a>
+            <Link className="punk-button is-outline" href="/projects">Explore the project field guide <ArrowRight size={15} /></Link>
           </div>
         </div>
       </section>
@@ -54,7 +55,7 @@ export default function AboutPage() {
       </section>
 
       <section className="punk-mini-cta">
-        <div className="container"><Radio size={25} /><div><strong>THE FULL SIGNAL</strong><p>Find current contact routes, professional information, and the wider studio portfolio at Grand Idea Studio.</p></div><a className="punk-button is-yellow" href="https://grandideastudio.com/about/" target="_blank" rel="noopener noreferrer">Read more <ArrowRight size={15} /></a></div>
+        <div className="container"><Radio size={25} /><div><strong>KEEP THE SIGNAL OPEN</strong><p>Explore Joe&apos;s work in this field guide, watch the public video archive, or send a direct enquiry through the site.</p></div><Link className="punk-button is-yellow" href="/contact">Contact us <ArrowRight size={15} /></Link></div>
       </section>
       <PunkFooter />
     </main>

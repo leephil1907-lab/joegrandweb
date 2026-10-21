@@ -31,7 +31,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
         ...(process.env.CONTACT_WEBHOOK_TOKEN ? { Authorization: `Bearer ${process.env.CONTACT_WEBHOOK_TOKEN}` } : {}),
       },
-      body: JSON.stringify({ name, email, topic: topic || "Other", message, source: "joegrand.com/contact" }),
+      body: JSON.stringify({ name, email, topic: topic || "Other", message, source: "joegrandweb.vercel.app/contact" }),
       cache: "no-store",
     });
 

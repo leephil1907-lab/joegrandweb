@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -15,8 +15,20 @@ const welcome: Message = {
   text: "Hi! I’m **Joe Grand’s website assistant**. Ask me about hardware hacking, electronics, security research, videos, training, collaborations, or the Kingpin Badge Lab.",
 };
 
+const socialHosts = new Set(["youtube.com", "www.youtube.com", "youtu.be", "github.com", "www.github.com", "discord.com", "www.discord.com", "discord.gg"]);
+
+function SafeChatLink({ href, children }: { href?: string; children: ReactNode }) {
+  if (href?.startsWith("/")) return <Link href={href}>{children}</Link>;
+  try {
+    const url = new URL(href || "", "https://joegrandweb.vercel.app");
+    if (socialHosts.has(url.hostname)) return <a href={url.toString()} target="_blank" rel="noopener noreferrer">{children}<ExternalLink size={11} /></a>;
+  } catch { /* Leave malformed links as text. */ }
+  return <>{children}</>;
+}
+
 function suggestionsFor(text: string) {
   const value = text.toLowerCase();
+  if (/(price|pricing|quote|billing|cost|rate)/.test(value)) return ["How do I request training pricing?", "Can I plan a private team session?", "Does the site take payments?"];
   if (/(collab|speak|book|partnership|interview)/.test(value)) return ["How do I start a collaboration?", "Can I invite Joe to speak?", "How do I request an interview?"];
   if (/(train|workshop|course|learn)/.test(value)) return ["What topics can training cover?", "How do I request a workshop?", "Where should a beginner start?"];
   if (/(project|hardware|security|electronics)/.test(value)) return ["Tell me about hardware hacking", "What is hardware security research?", "Where can I see project videos?"];
@@ -165,7 +177,7 @@ export default function LiveChat() {
                 <motion.div key={message.id} initial={reduceMotion ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className={`live-chat-row ${message.sender === "user" ? "is-user" : "is-bot"}`}>
                   {message.sender === "bot" && <span className="live-chat-message-icon"><Bot size={15} /></span>}
                   <div className={`live-chat-bubble ${message.sender === "user" ? "user-bubble" : "bot-bubble"}`}>
-                    {message.sender === "bot" ? <ReactMarkdown components={{ a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer">{children}<ExternalLink size={11} /></a>, ul: ({ children }) => <ul>{children}</ul>, strong: ({ children }) => <strong>{children}</strong> }}>{message.text}</ReactMarkdown> : message.text}
+                    {message.sender === "bot" ? <ReactMarkdown components={{ a: ({ href, children }) => <SafeChatLink href={href}>{children}</SafeChatLink>, ul: ({ children }) => <ul>{children}</ul>, strong: ({ children }) => <strong>{children}</strong> }}>{message.text}</ReactMarkdown> : message.text}
                     {loading && message.sender === "bot" && !message.text && <span className="chat-typing" aria-label="Assistant is responding"><i /><i /><i /></span>}
                   </div>
                   {message.sender === "user" && <span className="live-chat-message-icon user-icon"><User size={15} /></span>}

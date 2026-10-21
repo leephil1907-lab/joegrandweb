@@ -19,7 +19,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
         ...(process.env.NEWSLETTER_WEBHOOK_TOKEN ? { Authorization: `Bearer ${process.env.NEWSLETTER_WEBHOOK_TOKEN}` } : {}),
       },
-      body: JSON.stringify({ email, source: "joegrand.com/community" }),
+      body: JSON.stringify({ email, source: "joegrandweb.vercel.app/community" }),
       cache: "no-store",
     });
 

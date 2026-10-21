@@ -6,11 +6,7 @@
  * replaced by a CMS fetcher later without changing page layouts.
  */
 
-export const officialLinks = {
-  website: "https://joegrand.com/",
-  studio: "https://grandideastudio.com/",
-  studioAbout: "https://grandideastudio.com/about/",
-  studioTraining: "https://grandideastudio.com/training/",
+export const socialLinks = {
   youtube: "https://www.youtube.com/@JoeGrand",
   github: "https://github.com/joegrand",
   discord: "https://discord.com/invite/wud8KnF2Gm",
@@ -28,39 +24,58 @@ export const projectCatalog = [
   {
     id: "fault-injection", type: "Hardware security / research", title: "STM32 Fault Injection",
     text: "Research and learning material focused on voltage glitching, microcontroller code protection, and repeatable fault-injection techniques.",
-    tags: ["Fault injection", "STM32", "Research"], href: "https://github.com/joegrand/stm32-fault-injection", action: "Open GitHub project", accent: "yellow",
+    tags: ["Fault injection", "STM32", "Research"], accent: "yellow",
   },
   {
     id: "wallet-security", type: "Device security / media", title: "Cryptocurrency Wallet Security",
     text: "Hardware-wallet research and demonstrations that explore how real devices are designed, attacked, and understood.",
-    tags: ["Wallets", "Reverse engineering", "Security"], href: officialLinks.studio, action: "Visit Grand Idea Studio", accent: "pink",
+    tags: ["Wallets", "Reverse engineering", "Security"], accent: "pink",
   },
   {
     id: "jtagulator", type: "Open hardware / tool", title: "JTAGulator",
     text: "An open-source hardware tool designed to help identify JTAG and UART pinouts on target devices—one practical way into a hardware-security investigation.",
-    tags: ["JTAG", "UART", "Open hardware"], href: "https://grandideastudio.com/portfolio/security/", action: "Explore security tools", accent: "lime",
+    tags: ["JTAG", "UART", "Open hardware"], accent: "lime",
   },
   {
     id: "def-con-badges", type: "Badgelife / hacker culture", title: "DEF CON Electronic Badges",
     text: "Interactive electronic badges that helped define a playful, inventive part of hacker culture and continue to inspire makers and collectors.",
-    tags: ["DEF CON", "Badgelife", "Electronics"], href: "https://grandideastudio.com/search/?q=defcon%20badge", action: "Browse badge work", accent: "purple",
+    tags: ["DEF CON", "Badgelife", "Electronics"], accent: "purple",
   },
   {
     id: "prototype-this", type: "Engineering / television", title: "Prototype This!",
     text: "A Discovery Channel series that followed the real process of imagining, testing, and building ambitious technical prototypes.",
-    tags: ["Prototyping", "Engineering", "Media"], href: "https://www.imdb.com/title/tt1285035/", action: "View series information", accent: "yellow",
+    tags: ["Prototyping", "Engineering", "Media"], accent: "yellow",
   },
   {
-    id: "offspec", type: "Hardware security / community", title: "Offspec.io",
-    text: "A hardware-security community and training resource for people who want to move beyond the surface of electronic systems.",
-    tags: ["Training", "Hardware security", "Community"], href: "https://offspec.io/", action: "Visit Offspec", accent: "pink",
+    id: "offspec", type: "Hardware security / community", title: "Hardware Security Community",
+    text: "A practical route into the questions, techniques, and shared learning that help people look beyond the surface of electronic systems.",
+    tags: ["Training", "Hardware security", "Community"], accent: "pink",
   },
 ] as const;
 
 export const trainingCatalog = [
-  { code: "COURSE_01", title: "Hardware Hacking Basics", text: "An introduction to reverse engineering, product teardown, board analysis, signal monitoring, and common hardware attack vectors." },
-  { code: "COURSE_02", title: "Firmware Extraction & Manipulation", text: "Hands-on exploration of firmware extraction and system manipulation through on-chip debug interfaces." },
-  { code: "COURSE_03", title: "Defeating Microcontroller Code Protection", text: "Advanced techniques for assessing protections designed to prevent unauthorized access to a microcontroller." },
-  { code: "COURSE_04", title: "Hardware Implants & Espionage", text: "A practical look at hardware espionage, supply-chain compromise, and identifying surreptitious hardware." },
-  { code: "COURSE_05", title: "Cryptocurrency Wallet Exploitation", text: "Hardware-security methods for assessing common cryptocurrency hardware wallets." },
+  {
+    code: "COURSE_01", slug: "hardware-hacking-basics", title: "Joe Grand’s Hardware Hacking Basics",
+    text: "A two-day comprehensive course covering fundamental hardware-hacking concepts and techniques for reverse engineering and assessing electronic-device security. It combines lecture and hands-on exercises, ending with a custom-target challenge.",
+  },
+  {
+    code: "COURSE_02", slug: "firmware-extraction", title: "Firmware Extraction and Manipulation",
+    text: "A one-day hands-on workshop focused on firmware extraction and system manipulation through on-chip debug interfaces, using techniques for both bare-metal and Linux-based devices.",
+  },
+  {
+    code: "COURSE_03", slug: "code-protection", title: "Defeating Microcontroller Code Protection",
+    text: "A one-day advanced workshop on assessing and defeating microcontroller security features designed to protect against unauthorized access, with practical hardware tools and real-world targets.",
+  },
+  {
+    code: "COURSE_04", slug: "hardware-espionage", title: "Hardware Implants and Espionage",
+    text: "A one-day workshop about the risks and realities of hardware espionage and supply-chain compromise, including ways to detect and analyze surreptitious hardware.",
+  },
+  {
+    code: "COURSE_05", slug: "wallet-exploitation", title: "Cryptocurrency Wallet Exploitation",
+    text: "A two-day course on advanced hardware-hacking tools and techniques for assessing common cryptocurrency hardware wallets, including recovery and device-security workflows.",
+  },
+  {
+    code: "COURSE_06", slug: "hands-off-hardware-hacking", title: "Hands-off Hardware Hacking",
+    text: "A two-day comprehensive course that combines Joe Grand’s hardware-hacking training material and security research in a lecture-focused format for a wider audience.",
+  },
 ] as const;

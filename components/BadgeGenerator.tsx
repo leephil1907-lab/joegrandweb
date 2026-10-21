@@ -232,7 +232,7 @@ export default function BadgeGenerator() {
 
     context.fillStyle = "rgba(246,241,229,.52)";
     context.font = "400 10px monospace";
-    context.fillText("GENERATED LOCALLY / JOEGRAND.COM", 40, height - 28);
+    context.fillText("GENERATED LOCALLY / KINGPIN BADGE LAB", 40, height - 28);
     context.textAlign = "right";
     context.fillStyle = accent;
     context.fillText("SIGNAL: ACTIVE", width - 40, height - 28);

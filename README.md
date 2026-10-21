@@ -50,4 +50,4 @@ Before connecting a CMS, email service, analytics platform, or newsletter provid
 
 ## Deployment
 
-The app is compatible with standard Next.js hosting such as Vercel. Set the production domain in `app/layout.tsx` (`metadataBase`) if it differs from `https://joegrand.com`.
+The app is compatible with standard Next.js hosting such as Vercel. When connecting a custom domain, update the production-domain values in `app/layout.tsx`, `app/robots.ts`, and `app/sitemap.ts` from the default `https://joegrandweb.vercel.app`.

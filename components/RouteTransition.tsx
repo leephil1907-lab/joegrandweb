@@ -12,6 +12,7 @@ const labels: Record<string, string> = {
   "/projects": "Projects",
   "/videos": "Video archive",
   "/training": "Training",
+  "/pricing": "Pricing & booking",
   "/community": "Community",
   "/contact": "Contact",
   "/badge-lab": "Badge Lab",

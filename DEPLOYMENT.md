@@ -53,7 +53,7 @@ Configure the provider to accept the payload shape documented by the API routes,
 1. In Vercel, add the production domain under **Settings → Domains**.
 2. Create the DNS records Vercel requests at the domain registrar.
 3. Once DNS and SSL are active, confirm `https://<domain>/sitemap.xml`, `/robots.txt`, and `/manifest.webmanifest` load.
-4. If the production domain differs from `https://joegrand.com`, update `metadataBase` in `app/layout.tsx` and the base URL in `app/sitemap.ts` before the production deploy.
+4. When a custom production domain is connected, update `metadataBase` in `app/layout.tsx`, the Open Graph URL, `app/robots.ts`, and the base URL in `app/sitemap.ts` from the default `https://joegrandweb.vercel.app` value.
 
 ## Launch checklist
 

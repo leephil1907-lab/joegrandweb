@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { ArrowRight, ExternalLink, GraduationCap, Wrench } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, GraduationCap, Wrench } from "lucide-react";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
-import { officialLinks, trainingCatalog } from "@/content/site-content";
+import { trainingCatalog } from "@/content/site-content";
 
 export const metadata: Metadata = {
   title: "Training & Workshops",
   description: "Explore Joe Grand's hardware hacking training, workshops, and hands-on learning resources.",
 };
-
 
 export default function TrainingPage() {
   return (
@@ -19,7 +19,7 @@ export default function TrainingPage() {
           <div>
             <p className="punk-kicker">LEARN BY DOING / WORKSHOPS + TRAINING</p>
             <h1>Bring your<br /><em>curiosity.</em></h1>
-            <p>Hands-on technical learning for people who want to better understand the electronic systems around them—by inspecting, testing, and building.</p>
+            <p>Joe Grand&apos;s hardware-hacking training explores the concepts and techniques used to understand, manipulate, and assess electronic systems. No prior hardware, electronics, or security experience is required.</p>
           </div>
           <div className="punk-detail-stamp is-lime"><GraduationCap size={42} /><strong>LEARN<br />BY DOING</strong><span>OBSERVE / TEST / UNDERSTAND</span></div>
         </div>
@@ -27,9 +27,9 @@ export default function TrainingPage() {
 
       <section className="punk-detail-section">
         <div className="container">
-          <div className="punk-detail-intro"><span>COURSE CATALOG</span><p>These course summaries point to Grand Idea Studio for current availability, course details, and training enquiries.</p></div>
+          <div className="punk-detail-intro"><span>IN-PROJECT COURSE CATALOG</span><p>Course summaries and training enquiries live here in the site. Choose a course to start a direct training request without leaving the project.</p></div>
           <div className="punk-course-grid">
-            {trainingCatalog.map((course) => <article className="punk-course-card" key={course.code}><span>{course.code}</span><h2>{course.title}</h2><p>{course.text}</p><a href={officialLinks.studioTraining} target="_blank" rel="noopener noreferrer">Course details <ExternalLink size={15} /></a></article>)}
+            {trainingCatalog.map((course) => <article className="punk-course-card" id={course.slug} key={course.code}><span>{course.code}</span><h2>{course.title}</h2><p>{course.text}</p><Link href={`/pricing?course=${course.slug}`}>Plan dates &amp; pricing <ArrowRight size={15} /></Link></article>)}
           </div>
         </div>
       </section>
@@ -39,7 +39,7 @@ export default function TrainingPage() {
       </section>
 
       <section className="punk-mini-cta is-purple">
-        <div className="container"><Wrench size={25} /><div><strong>READY FOR THE LAB?</strong><p>For current course dates, corporate training, and workshop enquiries, use the official training pages.</p></div><a className="punk-button is-yellow" href={officialLinks.studioTraining} target="_blank" rel="noopener noreferrer">Explore training <ArrowRight size={15} /></a></div>
+        <div className="container"><Wrench size={25} /><div><strong>READY FOR THE LAB?</strong><p>For course dates, private sessions, corporate training, or workshop enquiries, send a training request directly through this site.</p></div><Link className="punk-button is-yellow" href="/pricing">Plan dates &amp; pricing <ArrowRight size={15} /></Link></div>
       </section>
       <PunkFooter />
     </main>

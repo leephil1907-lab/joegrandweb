@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArrowRight, ExternalLink, Play, Youtube } from "lucide-react";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
-import { featuredVideos, officialLinks } from "@/content/site-content";
+import { featuredVideos, socialLinks } from "@/content/site-content";
 
 export const metadata: Metadata = {
   title: "Videos",
@@ -21,7 +21,7 @@ export default function VideosPage() {
             <h1>Take the<br /><em>long way in.</em></h1>
             <p>Videos are where hardware research becomes a shared investigation: careful observation, experiments, failures, and the story behind a device.</p>
           </div>
-          <a className="punk-video-hero-card" href={officialLinks.youtube} target="_blank" rel="noopener noreferrer"><Youtube size={48} /><strong>JOE GRAND<br />ON YOUTUBE</strong><span>Videos, talks, projects <ExternalLink size={14} /></span></a>
+          <a className="punk-video-hero-card" href={socialLinks.youtube} target="_blank" rel="noopener noreferrer"><Youtube size={48} /><strong>JOE GRAND<br />ON YOUTUBE</strong><span>Videos, talks, projects <ExternalLink size={14} /></span></a>
         </div>
       </section>
 
@@ -42,7 +42,7 @@ export default function VideosPage() {
       </section>
 
       <section className="punk-mini-cta is-purple">
-        <div className="container"><Play size={25} fill="currentColor" /><div><strong>DON’T MISS A SIGNAL</strong><p>The official channel is the best place to find new uploads, playlists, talks, and field notes.</p></div><a className="punk-button is-yellow" href={officialLinks.youtube} target="_blank" rel="noopener noreferrer">Visit YouTube <ArrowRight size={15} /></a></div>
+        <div className="container"><Play size={25} fill="currentColor" /><div><strong>DON’T MISS A SIGNAL</strong><p>The official channel is the best place to find new uploads, playlists, talks, and field notes.</p></div><a className="punk-button is-yellow" href={socialLinks.youtube} target="_blank" rel="noopener noreferrer">Visit YouTube <ArrowRight size={15} /></a></div>
       </section>
       <PunkFooter />
     </main>

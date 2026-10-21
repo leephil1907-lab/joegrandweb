@@ -22,9 +22,10 @@ His work includes:
 Rules:
 - Be concise, friendly, professional, and technically credible.
 - Use Markdown: short paragraphs, bullet points, and bold key points.
-- Recommend relevant website sections such as Projects, Videos, Training, About, Badge Lab, or Contact.
+- Recommend relevant website sections such as Projects, Videos, Training, Pricing & Booking, About, Badge Lab, or Contact.
 - Do not invent private contact details, pricing, availability, or claims.
-- If you do not know something, say so and recommend the contact page or Joe's official site at https://joegrand.com/.
+- If you do not know something, say so and recommend the in-site Contact page.
+- Do not direct visitors to another website, except approved public social channels such as YouTube, GitHub, or Discord when directly relevant.
 - Make clear you are an AI assistant, not Joe Grand or a human team member.
 - Keep most answers under 150 words.`;
 
@@ -46,8 +47,11 @@ function publicGuideReply(question: string) {
   if (/(badge|kingpin protocol|badge lab|png|download)/.test(value)) {
     return "**Badge Lab** lets you create a custom Kingpin Badge locally in your browser. Choose a handle, style, accent signal, and level, then download a PNG or copy a share link. Complete the on-site Kingpin Protocol to unlock the Kingpin level.\n\nOpen **Badge Lab** from the main navigation to get started.";
   }
+  if (/(price|pricing|quote|billing|cost|rate)/.test(value)) {
+    return "The **Pricing & Booking** page helps you build a training brief before requesting dates, availability, or pricing. Choose a course, format, group size, and request type; the site then carries those choices into the **Contact** page.\n\nNo card details are collected on the site. Pricing is discussed after the training scope is clear.";
+  }
   if (/(collab|collaborat|speak|speaker|talk|interview|partner|book)/.test(value)) {
-    return "For collaborations, talks, interviews, partnerships, or unusual technical questions, use the **Contact** page and include your goal, timing, and relevant context.\n\nFor current professional information, you can also visit Joe's official site at https://joegrand.com/.";
+    return "For collaborations, talks, interviews, partnerships, or unusual technical questions, use the **Contact** page and include your goal, timing, and relevant context.\n\nThe enquiry route stays inside this site so you can start the conversation without being redirected elsewhere.";
   }
   if (/(train|workshop|course|learn|class)/.test(value)) {
     return "Joe's work includes hands-on hardware-hacking learning focused on observation, testing, and understanding electronic systems. Visit the **Training** page for the course overview and the official training route for current availability.\n\nA useful starting point is to learn how to read a board, follow signals, and validate assumptions with focused experiments.";
@@ -65,7 +69,7 @@ function publicGuideReply(question: string) {
     return "Joe Grand—also known as **Kingpin**—is a computer engineer, hardware hacker, inventor, and educator. He is known for work with L0pht Heavy Industries, creating the first electronic badges for DEF CON, co-hosting *Prototype This!*, and founding Grand Idea Studio.\n\nVisit the **About** page for the fuller field guide.";
   }
   if (/(contact|email|reach|help)/.test(value)) {
-    return "For a collaboration, talk, training, or project enquiry, use the **Contact** page. It includes the public enquiry route and support options.\n\nFor official professional details, visit https://joegrand.com/.";
+    return "For a collaboration, talk, training, or project enquiry, use the **Contact** page. It includes the direct enquiry route and support options inside this site.";
   }
 
   return "I can help you explore Joe Grand's public work. Try asking about **projects**, **hardware security**, **videos**, **training**, **community**, **collaborations**, or the **Kingpin Badge Lab**.\n\nI’m a website guide, not Joe Grand or a human support team.";

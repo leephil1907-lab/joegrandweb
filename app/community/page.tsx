@@ -4,7 +4,7 @@ import { ArrowRight, ExternalLink, Github, MessageCircle, Radio } from "lucide-r
 import NewsletterSignup from "@/components/NewsletterSignup";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
-import { officialLinks } from "@/content/site-content";
+import { socialLinks } from "@/content/site-content";
 
 export const metadata: Metadata = {
   title: "Community",
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const channels = [
-  { title: "Official Discord", text: "A place for hardware hackers, makers, students, and the curious to trade notes and learn in public.", href: officialLinks.discord, label: "Open Discord", icon: MessageCircle },
-  { title: "YouTube", text: "The public archive for hardware research, videos, projects, talks, and technical deep dives.", href: officialLinks.youtube, label: "Watch the channel", icon: Radio },
-  { title: "GitHub", text: "Find public code, project repositories, and technical material shared through Joe’s GitHub presence.", href: officialLinks.github, label: "Explore GitHub", icon: Github },
+  { title: "Official Discord", text: "A place for hardware hackers, makers, students, and the curious to trade notes and learn in public.", href: socialLinks.discord, label: "Open Discord", icon: MessageCircle },
+  { title: "YouTube", text: "The public archive for hardware research, videos, projects, talks, and technical deep dives.", href: socialLinks.youtube, label: "Watch the channel", icon: Radio },
+  { title: "GitHub", text: "Find public code, project repositories, and technical material shared through Joe’s GitHub presence.", href: socialLinks.github, label: "Explore GitHub", icon: Github },
 ];
 
 export default function CommunityPage() {

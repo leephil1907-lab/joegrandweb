@@ -8,7 +8,7 @@ import KingpinProtocol from "@/components/KingpinProtocol";
 import RouteTransition from "@/components/RouteTransition";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://joegrand.com"),
+  metadataBase: new URL("https://joegrandweb.vercel.app"),
   title: {
     default: "Joe Grand | Hardware Hacker, Engineer & Educator",
     template: "%s | Joe Grand",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   creator: "Joe Grand",
   openGraph: {
     type: "website",
-    url: "https://joegrand.com",
+    url: "https://joegrandweb.vercel.app",
     siteName: "Joe Grand",
     title: "Joe Grand | Hardware Hacker, Engineer & Educator",
     description: "Explore hardware hacking, electronics, security research, videos, projects, and training by Joe Grand, also known as Kingpin.",
