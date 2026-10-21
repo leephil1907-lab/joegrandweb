@@ -17,6 +17,7 @@ const labels: Record<string, string> = {
   "/contact": "Contact",
   "/badge-lab": "Badge Lab",
   "/privacy": "Privacy",
+  "/terms": "Terms",
 };
 
 function routeLabel(pathname: string) {

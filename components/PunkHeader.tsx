@@ -27,7 +27,7 @@ export default function PunkHeader({ active }: PunkHeaderProps) {
     <header className="punk-header">
       <a className="punk-skip-link" href="#main-content">Skip to main content</a>
       <div className="punk-nav container">
-        <Link className="punk-brand" href="/" aria-label="Joe Grand home" onClick={closeMenu}>
+        <Link className="punk-brand" href="/" prefetch={false} aria-label="Joe Grand home" onClick={closeMenu}>
           <span className="punk-brand-mark">JG</span>
           <span>JOE GRAND <b>• KINGPIN</b></span>
         </Link>
@@ -35,7 +35,7 @@ export default function PunkHeader({ active }: PunkHeaderProps) {
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
         <nav className={`punk-nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Main navigation">
-          {links.map((link) => <Link key={link.label} href={link.href} onClick={closeMenu} aria-current={active === link.label.toLowerCase() ? "page" : undefined}>{link.label}</Link>)}
+          {links.map((link) => <Link key={link.label} href={link.href} prefetch={false} onClick={closeMenu} aria-current={active === link.label.toLowerCase() ? "page" : undefined}>{link.label}</Link>)}
         </nav>
         <a className="punk-nav-cta" href={youtube} target="_blank" rel="noopener noreferrer"><Youtube size={15} /> YouTube <ExternalLink size={13} /></a>
       </div>
