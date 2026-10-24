@@ -44,8 +44,10 @@ export default function SignalCarousel() {
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [paused, setPaused] = useState(false);
+  const [manuallyPaused, setManuallyPaused] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
   const slide = slides[active];
+  const autoPlaying = !manuallyPaused && !isInteracting && !reduceMotion;
 
   function move(next: number, nextDirection = 1) {
     setDirection(nextDirection);
@@ -53,18 +55,20 @@ export default function SignalCarousel() {
   }
 
   function next() {
-    move(active + 1, 1);
+    setDirection(1);
+    setActive((current) => (current + 1) % slides.length);
   }
 
   function previous() {
-    move(active - 1, -1);
+    setDirection(-1);
+    setActive((current) => (current - 1 + slides.length) % slides.length);
   }
 
   useEffect(() => {
-    if (paused || reduceMotion) return;
-    const timer = window.setInterval(next, 6200);
+    if (!autoPlaying) return;
+    const timer = window.setInterval(next, 5200);
     return () => window.clearInterval(timer);
-  }, [active, paused, reduceMotion]);
+  }, [autoPlaying]);
 
   return (
     <section className="signal-carousel-section" aria-labelledby="signal-carousel-title">
@@ -83,10 +87,10 @@ export default function SignalCarousel() {
           aria-roledescription="carousel"
           aria-label="Featured Joe Grand video images"
           tabIndex={0}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocusCapture={() => setPaused(true)}
-          onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}
+          onMouseEnter={() => setIsInteracting(true)}
+          onMouseLeave={() => setIsInteracting(false)}
+          onFocusCapture={() => setIsInteracting(true)}
+          onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setIsInteracting(false); }}
           onKeyDown={(event) => {
             if (event.key === "ArrowRight") { event.preventDefault(); next(); }
             if (event.key === "ArrowLeft") { event.preventDefault(); previous(); }
@@ -116,6 +120,7 @@ export default function SignalCarousel() {
             </AnimatePresence>
             <div className="signal-carousel-frame" aria-hidden="true"><i /><i /><i /></div>
             <span className="signal-carousel-count" aria-hidden="true">0{active + 1} / 0{slides.length}</span>
+            <div className="signal-carousel-progress" aria-hidden="true"><span key={`${active}-${autoPlaying ? "running" : "paused"}`} className={autoPlaying ? "is-running" : ""} /></div>
           </div>
 
           <div className="signal-carousel-copy">
@@ -128,9 +133,9 @@ export default function SignalCarousel() {
             </AnimatePresence>
             <div className="signal-carousel-actions">
               <Link href="/videos" className="punk-button is-yellow">Open video archive <ArrowRight size={16} /></Link>
-              <button type="button" className="signal-carousel-pause" onClick={() => setPaused((value) => !value)} aria-pressed={paused}>
-                {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
-                {paused ? "Resume reel" : "Pause reel"}
+              <button type="button" className="signal-carousel-pause" onClick={() => setManuallyPaused((value) => !value)} aria-pressed={manuallyPaused}>
+                {manuallyPaused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+                {manuallyPaused ? "Resume reel" : "Pause reel"}
               </button>
             </div>
           </div>
