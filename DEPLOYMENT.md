@@ -64,3 +64,15 @@ Configure the provider to accept the payload shape documented by the API routes,
 - [ ] Connect domain and verify HTTPS.
 - [ ] Check generated metadata/social card on the production URL.
 - [ ] Review the Vercel deployment log and GitHub Actions check.
+
+## Private operations console (separate deployment)
+
+The repository also contains `admin-console`, an intentionally separate protected Next.js app. It is **not** a public-site route and must be deployed as its own Vercel project:
+
+1. Create a second Vercel project from this repository and set its **Root Directory** to `admin-console`.
+2. Give it a separate administrative hostname (for example, `admin.<your-domain>`), rather than adding an `/admin` path to the public site.
+3. Set `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and a unique `ADMIN_SESSION_SECRET` of at least 32 characters in that admin project only.
+4. Turn on Vercel Deployment Protection (or an identity-aware proxy) for a host-level sign-in gate, in addition to the console’s own signed HttpOnly session.
+5. Do not put any admin hostname or login link in public navigation, the sitemap, marketing messages, or client-side source.
+
+See `admin-console/README.md` for the security boundary, local check, and detailed deployment steps. The console intentionally contains no public-content editing API until a protected CMS/release workflow is selected.

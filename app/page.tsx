@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CircuitBoard, MessageCircle, Play, Radio, Sparkles, Wrench, Youtube } from "lucide-react";
 import PunkFooter from "@/components/PunkFooter";
 import PunkHeader from "@/components/PunkHeader";
+import SignalCarousel from "@/components/SignalCarousel";
 
 const routes = [
   { number: "01", title: "About Joe", text: "The person behind the bench, the badges, and the habit of asking better questions.", href: "/about", label: "Read the story", icon: Radio, tone: "is-pink" },
@@ -54,6 +55,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SignalCarousel />
 
       <section className="punk-route-index" aria-labelledby="route-index-title">
         <div className="container">

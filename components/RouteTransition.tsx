@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Radio } from "lucide-react";
+import { useReducedMotion } from "motion/react";
 
 type Transition = { label: string } | null;
 
@@ -26,11 +27,12 @@ function routeLabel(pathname: string) {
 
 export default function RouteTransition() {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const [transition, setTransition] = useState<Transition>(null);
 
   useEffect(() => {
     function beginTransition(event: MouseEvent) {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (reduceMotion || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
       const target = event.target;
       if (!(target instanceof Element)) return;
@@ -47,11 +49,11 @@ export default function RouteTransition() {
 
     document.addEventListener("click", beginTransition, true);
     return () => document.removeEventListener("click", beginTransition, true);
-  }, []);
+  }, [reduceMotion]);
 
   useEffect(() => {
     if (!transition) return;
-    const completed = window.setTimeout(() => setTransition(null), 380);
+    const completed = window.setTimeout(() => setTransition(null), 520);
     return () => window.clearTimeout(completed);
   }, [pathname, transition]);
 
@@ -63,6 +65,7 @@ export default function RouteTransition() {
 
   return (
     <div className={`route-transition ${transition ? "is-active" : ""}`} aria-hidden={!transition}>
+      <div className="route-transition-shutters" aria-hidden="true"><i /><i /><i /></div>
       <div className="route-transition-bar"><span /></div>
       <div className="route-transition-status" role="status" aria-live="polite">
         <Radio size={16} aria-hidden="true" />

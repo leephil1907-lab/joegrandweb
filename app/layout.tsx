@@ -6,6 +6,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import LiveChat from "@/components/LiveChat";
 import KingpinProtocol from "@/components/KingpinProtocol";
 import RouteTransition from "@/components/RouteTransition";
+import MotionField from "@/components/MotionField";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://joegrandweb.vercel.app"),
@@ -37,5 +38,5 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim().toUpperCase();
   const analyticsEnabled = Boolean(measurementId && /^G-[A-Z0-9]+$/.test(measurementId));
-  return <html lang="en"><body><GoogleAnalytics measurementId={measurementId} /><RouteTransition /><ScrollProgress />{children}<LiveChat /><KingpinProtocol /><AnalyticsConsent enabled={analyticsEnabled} /></body></html>;
+  return <html lang="en"><body><GoogleAnalytics measurementId={measurementId} /><MotionField /><RouteTransition /><ScrollProgress />{children}<LiveChat /><KingpinProtocol /><AnalyticsConsent enabled={analyticsEnabled} /></body></html>;
 }
